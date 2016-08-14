@@ -1,5 +1,5 @@
-react-slideshow
-===============
+react-image-slideshow
+=====================
 [![npm version](https://img.shields.io/npm/v/react-portal.svg?style=flat-square)]()
 [![Build Status](https://travis-ci.org/tajo/react-portal.svg?branch=master)]()
 
@@ -21,7 +21,9 @@ react-slideshow
 
 
 ## Demo
+#### Live demo 
 Almost done
+#### Local demo
 ```shell
 git clone https://github.com/Caldis/react-image-slideshow
 cd react-image-slideshow
@@ -29,13 +31,13 @@ npm install
 npm run dev
 open http://127.0.0.1:8080/
 ```
- 
+#### Or directly open build file in dir /example/index.html
  
  
 ## Installation
 Almost done
 ```shell
-npm install react-slideshow --save
+npm install react-image-slideshow --save
 ```
 
 
@@ -43,7 +45,7 @@ npm install react-slideshow --save
 ## Usage
 ### 1. Import the component
 ```jsx
-    import SlideShow from 'react-slideshow';
+    import SlideShow from 'react-image-slideshow';
 ```
 ### Setup the image data
 ```jsx
@@ -142,4 +144,4 @@ If false, the sequence indicator of image will not show.
 
 
 ## Credit
-- Special thank image of example pages from ```森画谨制```(http://weibo.com/senhuahua)
+- Special thank image of example pages from ``` 森画谨制 ``` (http://weibo.com/senhuahua)
