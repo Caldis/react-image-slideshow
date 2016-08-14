@@ -1,7 +1,7 @@
 {
   "name": "react-image-slideshow",
-  "version": "1.0.3",
-  "description": "A simple image slideshow with react",
+  "version": "1.0.4",
+  "description": "A simple image slideshow components with react.js",
   "author": "Caldis",
   "license": "MIT",
   "keywords": [

@@ -35,9 +35,8 @@ open http://127.0.0.1:8080/
  
  
 ## Installation
-Almost done
 ```shell
-npm install react-image-slideshow --save
+npm install react-image-slideshow react-portal tween.js --save
 ```
 
 
@@ -140,6 +139,7 @@ If false, the sequence indicator of image will not show.
 ## On the road
 - Image with Title/text overlay
 - More transition animate
+- Non dependence
 - Thumbnails
 
 
