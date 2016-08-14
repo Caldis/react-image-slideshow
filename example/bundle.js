@@ -161,7 +161,7 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { className: _publicStyle2.default.main },
-	                _react2.default.createElement(_app2.default, { imgs: this.state.protoImgs, maxShow: 3, onImgClick: this.handlePrototypeImageClick }),
+	                _react2.default.createElement(_app2.default, { imgs: this.state.protoImgs, maxShow: 10, onImgClick: this.handlePrototypeImageClick }),
 	                _react2.default.createElement(_app4.default, { imgs: this.state.imageData, ref: 'SlideShow' })
 	            );
 	        }

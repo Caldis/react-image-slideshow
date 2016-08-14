@@ -22,7 +22,7 @@ react-image-slideshow
 
 ## Demo
 #### Live demo 
-Almost done
+http://u2sk.com/code/react-image-slideshow/
 #### Local demo
 ```shell
 git clone https://github.com/Caldis/react-image-slideshow
@@ -45,42 +45,42 @@ npm install react-image-slideshow --save
 ## Usage
 ### 1. Import the component
 ```jsx
-import SlideShow from 'react-image-slideshow';
+    import SlideShow from 'react-image-slideshow';
 ```
 ### Setup the image data
 ```jsx
-constructor(props){
-    super(props);
-    this.state = {
-        imgsData:[
-            {
-                url  : 'http://ww3.sinaimg.cn/large/d8e32accgw1f6c55xxgp2j20zk0qodry.jpg'
-            },
-            {
-                url  : 'http://ww1.sinaimg.cn/large/d8e32accgw1f69b7ifm4gj20qo0qon3e.jpg'
-            },
-            {
-                url  : 'http://ww1.sinaimg.cn/large/d8e32accgw1f62keeub2uj21kw2dc4pa.jpg'
-            }
-        ]
+    constructor(props){
+        super(props);
+        this.state = {
+            imgsData:[
+                {
+                    url  : 'http://ww3.sinaimg.cn/large/d8e32accgw1f6c55xxgp2j20zk0qodry.jpg'
+                },
+                {
+                    url  : 'http://ww1.sinaimg.cn/large/d8e32accgw1f69b7ifm4gj20qo0qon3e.jpg'
+                },
+                {
+                    url  : 'http://ww1.sinaimg.cn/large/d8e32accgw1f62keeub2uj21kw2dc4pa.jpg'
+                }
+            ]
+        }
     }
-}
 ```
 ### 2. Place the component, pass in the image data and ref name
 ```jsx
-render() {
-    return (
-        <div className={styles.main}>
-            <SlideShow imgs={this.state.imgsData} ref="SlideShow"/>
-        </div>
-    );
-}
+    render() {
+        return (
+            <div className={styles.main}>
+                <SlideShow imgs={this.state.imgsData} ref="SlideShow"/>
+            </div>
+        );
+    }
 ```
 ### 3. Call the open method to open the slideshow overlay, yay!
 ```jsx
-handleSlideshowOpen(index) {
-    this.refs.SlideShow.handleModalOpen(index);
-}
+    handleSlideshowOpen(index) {
+        this.refs.SlideShow.handleModalOpen(index);
+    }
 ```
 
 
@@ -93,16 +93,16 @@ Ref the components to call the "handleModalOpen()" method.
 #### func : handleModalOpen(index)
 ##### Pass in the index num to control the initial image in the slideshow
 ```jsx
-handleSlideshowOpen(index) {
-    this.refs.SlideShow.handleModalOpen(index);
-}
-render() {
-    return (
-        <div className="main">
-            <SlideShow imgs={imgUrlList} ref="SlideShow"/>
-        </div>
-    );
-}
+    handleSlideshowOpen(index) {
+        this.refs.SlideShow.handleModalOpen(index);
+    }
+    render() {
+        return (
+            <div className="main">
+                <SlideShow imgs={imgUrlList} ref="SlideShow"/>
+            </div>
+        );
+    }
 ```
 ### Optional
 #### lazyLoad: bool
@@ -132,8 +132,8 @@ If false, the sequence indicator of image will not show.
 
 
 ## Dependencies
-#### ```react-portal``` (https://github.com/tajo/react-portal)
-#### ```tween.js``` (https://github.com/CreateJS/TweenJS)
+#### react-portal(https://github.com/tajo/react-portal)
+#### tween.js(https://github.com/CreateJS/TweenJS)
 
 
 
