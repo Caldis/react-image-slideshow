@@ -11,22 +11,7 @@ class Main extends React.Component {
         super(props);
 
         this.state = {
-            protoImgs: [
-                'http://ww3.sinaimg.cn/large/d8e32accgw1f6c55xxgp2j20zk0qodry.jpg',
-                'http://ww1.sinaimg.cn/large/d8e32accgw1f69b7ifm4gj20qo0qon3e.jpg',
-                'http://ww1.sinaimg.cn/large/d8e32accgw1f62keeub2uj21kw2dc4pa.jpg',
-                'http://ww3.sinaimg.cn/large/d8e32accgw1f62kd8cnc9j21kw16rqfi.jpg',
-                'http://ww4.sinaimg.cn/large/d8e32accgw1f5vv1j1leij21kw11x4a5.jpg',
-                'http://ww4.sinaimg.cn/large/d8e32accgw1f57j2kvgaoj21kw2dcx6p.jpg',
-                'http://ww2.sinaimg.cn/large/d8e32accgw1f57j2b7dytj21kw2dc7wh.jpg',
-                'http://ww3.sinaimg.cn/large/d8e32accgw1f51ydnrg2mj21kw24c7wh.jpg',
-                'http://ww1.sinaimg.cn/large/d8e32accgw1f4yf8z8z16j21kw262nlp.jpg',
-                'http://ww3.sinaimg.cn/large/d8e32accgw1f443p0dxd3j21kw2dc7wh.jpg',
-                'http://ww2.sinaimg.cn/large/d8e32accgw1f443pbvvj2j21kw2dc4qp.jpg',
-                'http://ww2.sinaimg.cn/large/d8e32accgw1f3cxkf16boj21kw11xqgq.jpg',
-                'http://ww2.sinaimg.cn/large/d8e32accgw1f3cxl55881j21kw2dc1kx.jpg'
-            ],
-            protoImgsDetail: [
+            imageData: [
                 {
                     url  : 'http://ww3.sinaimg.cn/large/d8e32accgw1f6c55xxgp2j20zk0qodry.jpg',
                     title: '图片1',
@@ -109,7 +94,7 @@ class Main extends React.Component {
         return (
             <div className={styles.main}>
                 <Gallery imgs={this.state.protoImgs} maxShow={3} onImgClick={this.handlePrototypeImageClick}/>
-                <SlideShow imgs={this.state.protoImgsDetail} ref="SlideShow"/>
+                <SlideShow imgs={this.state.imageData} ref="SlideShow"/>
             </div>
         );
     }
