@@ -31,7 +31,7 @@ npm install
 npm run dev
 open http://127.0.0.1:8080/
 ```
-#### Or directly open build file in dir ···/example/index.html···
+#### Or directly open build file in dir ```/example/index.html```
  
  
 ## Installation
