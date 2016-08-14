@@ -132,8 +132,8 @@ If false, the sequence indicator of image will not show.
 
 
 ## Dependencies
-#### react-portal(https://github.com/tajo/react-portal)
-#### tween.js(https://github.com/CreateJS/TweenJS)
+#### ```react-portal``` (https://github.com/tajo/react-portal)
+#### ```tween.js``` (https://github.com/CreateJS/TweenJS)
 
 
 
