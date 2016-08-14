@@ -39,6 +39,7 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
+    "build": "webpack --progress --colors --watch",
     "dev": "webpack-dev-server --content-base example --devtool eval"
   }
 }
