@@ -1,7 +1,7 @@
 react-image-slideshow
 =====================
-[![npm version](https://img.shields.io/npm/v/react-portal.svg?style=flat-square)]()
-[![Build Status](https://travis-ci.org/tajo/react-portal.svg?branch=master)]()
+[![npm version](https://img.shields.io/npm/v/react-portal.svg?style=flat-square)](https://www.npmjs.com/package/react-image-slideshow)
+[![Build Status](https://travis-ci.org/tajo/react-portal.svg?branch=master)](https://www.npmjs.com/package/react-image-slideshow)
 
 > A simple image slideshow with react.
 > Just pass the imageList, then call the open method, and, yay !
@@ -131,8 +131,8 @@ If false, the sequence indicator of image will not show.
 
 
 ## Dependencies
-#### react-portal(https://github.com/tajo/react-portal)
-#### tween.js(https://github.com/CreateJS/TweenJS)
+- ```react-portal``` (https://github.com/tajo/react-portal)
+- ```tween.js``` (https://github.com/CreateJS/TweenJS)
 
 
 
@@ -144,4 +144,4 @@ If false, the sequence indicator of image will not show.
 
 
 ## Credit
-- Special thank image of example pages from ``` 森画谨制 ``` (http://weibo.com/senhuahua)
+- Special thank image of example pages from ```森画谨制```(http://weibo.com/senhuahua)
