@@ -1,8 +1,6 @@
 react-image-slideshow
 =====================
-[![npm version](https://img.shields.io/npm/v/react-portal.svg?style=flat-square)](https://www.npmjs.com/package/react-image-slideshow)
-[![Build Status](https://travis-ci.org/tajo/react-portal.svg?branch=master)](https://www.npmjs.com/package/react-image-slideshow)
-
+[![npm version](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/react-image-slideshow)
 > A simple image slideshow with react.
 > Just pass the imageList, then call the open method, and, yay !
 
@@ -42,7 +40,7 @@ npm install react-image-slideshow react-portal tween.js --save
 
 
 ## Usage
-### 1. Import the component
+### 1. Import the component (Make sure you already install the ```react-portal``` and ```tween.js```)
 ```jsx
 import SlideShow from 'react-image-slideshow';
 ```
