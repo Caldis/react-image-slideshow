@@ -1,6 +1,6 @@
 {
   "name": "react-image-slideshow",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "A simple image slideshow with react",
   "author": "Caldis",
   "license": "MIT",
@@ -27,6 +27,7 @@
     "tween.js": "^16.3.5"
   },
   "devDependencies": {
+    "babel-cli": "^6.11.4",
     "babel-core": "^6.8.0",
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
@@ -40,6 +41,7 @@
   },
   "scripts": {
     "build": "webpack --progress --colors --watch",
-    "dev": "webpack-dev-server --content-base example --devtool eval"
+    "dev": "webpack-dev-server --content-base example --devtool eval",
+    "pack": "./node_modules/.bin/babel src --copy-files --source-maps --extensions .es6,.js,.es,.jsx --out-dir lib"
   }
 }
