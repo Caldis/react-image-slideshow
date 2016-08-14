@@ -87,8 +87,25 @@ handleSlideshowOpen(index) {
 ## Documentation - props
 ### Always required
 #### props : imgs
+A Array contain several object of images detail
+```jsx
+[
+    {
+        url  : 'http://ww3.sinaimg.cn/large/d8e32accgw1f6c55xxgp2j20zk0qodry.jpg'
+    },
+    {
+        url  : 'http://ww1.sinaimg.cn/large/d8e32accgw1f69b7ifm4gj20qo0qon3e.jpg'
+    },
+    {
+        url  : 'http://ww1.sinaimg.cn/large/d8e32accgw1f62keeub2uj21kw2dc4pa.jpg'
+    }
+]
+```
 #### props : ref
 Ref the components to call the "handleModalOpen()" method.
+```jsx
+<SlideShow imgs={this.state.imgsData} ref="SlideShow"/>
+```
 #### func : handleModalOpen(index)
 ##### Pass in the index num to control the initial image in the slideshow
 ```jsx
@@ -141,6 +158,7 @@ If false, the sequence indicator of image will not show.
 - More transition animate
 - Non dependence
 - Thumbnails
+
 
 
 ## Credit
