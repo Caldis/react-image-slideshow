@@ -1,0 +1,10 @@
+/*global prefix*/
+* {
+    font-family: "Roboto","Helvetica Neue",Helvetica,"PingFang SC","Microsoft Yahei","WenQuanYi Micro Hei",Arial,Verdana,sans-serif;
+}
+html {
+    overflow-y: scroll;
+}
+body {
+    margin: 0;
+}

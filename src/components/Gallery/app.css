@@ -1,0 +1,33 @@
+.eGallery {
+    box-sizing: border-box;
+    width: 100%;
+}
+.eGalleryimageWrapper {
+    display: inline-block;
+    width: 33.33333%;
+    box-sizing: border-box;
+    padding: 5px 5px 0;
+    opacity: 1.0;
+    transition: all .3s;
+}
+.eGalleryimageWrapper:hover {
+    opacity: 0.7;
+}
+.eGalleryimageWrapper:active {
+    opacity: 0.9;
+}
+.eGalleryimage{
+    width: 100%;
+    cursor: pointer;
+}
+
+.bannerUser{
+    height: 400px;
+}
+.bannerUserElem{
+    height: 400px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
