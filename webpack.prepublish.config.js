@@ -1,10 +1,12 @@
 var path    = require('path');
 
 var config = {
-    entry: path.resolve(__dirname, './src/main.js'),
+    entry: path.resolve(__dirname, './src/components/Slideshow/app.js'),
     output: {
-        path: path.resolve(__dirname, './example'),
-        filename: 'bundle.js'
+        path: path.resolve(__dirname, './lib'),
+        library: 'react-image-slideshow',
+        libraryTarget: 'umd',
+        filename: 'app.js'
     },
     devServer: {
         historyApiFallback: true
@@ -28,6 +30,12 @@ var config = {
                 loader: "style!css?modules&localIdentName=[local]-[hash:base64:5]"
             }
         ]
+    },
+    externals: {
+        'react'       : 'umd react',
+        'react-dom'   : 'umd react-dom',
+        'react-portal': 'umd react-portal',
+        'tween.js'    : 'umd tween.js'
     }
 };
 

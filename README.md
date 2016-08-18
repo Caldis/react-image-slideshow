@@ -1,8 +1,6 @@
-react-slideshow
-===============
-[![npm version](https://img.shields.io/npm/v/react-portal.svg?style=flat-square)]()
-[![Build Status](https://travis-ci.org/tajo/react-portal.svg?branch=master)]()
-
+react-image-slideshow
+=====================
+[![npm version](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/react-image-slideshow)
 > A simple image slideshow with react.
 > Just pass the imageList, then call the open method, and, yay !
 
@@ -21,7 +19,9 @@ react-slideshow
 
 
 ## Demo
-Almost done
+#### Live demo
+http://u2sk.com/code/react-image-slideshow/
+#### Local demo
 ```shell
 git clone https://github.com/Caldis/react-image-slideshow
 cd react-image-slideshow
@@ -31,54 +31,52 @@ open http://127.0.0.1:8080/
 ```
  
  
- 
 ## Installation
-Almost done
 ```shell
-npm install react-slideshow --save
+npm install react-image-slideshow react-portal tween.js --save
 ```
 
 
 
 ## Usage
-### 1. Import the component
+### 1. Import the component (Make sure you already install the ```react-portal``` and ```tween.js```)
 ```jsx
-    import SlideShow from 'react-slideshow';
+import SlideShow from 'react-image-slideshow';
 ```
 ### Setup the image data
 ```jsx
-    constructor(props){
-        super(props);
-        this.state = {
-            imgsData:[
-                {
-                    url  : 'http://ww3.sinaimg.cn/large/d8e32accgw1f6c55xxgp2j20zk0qodry.jpg'
-                },
-                {
-                    url  : 'http://ww1.sinaimg.cn/large/d8e32accgw1f69b7ifm4gj20qo0qon3e.jpg'
-                },
-                {
-                    url  : 'http://ww1.sinaimg.cn/large/d8e32accgw1f62keeub2uj21kw2dc4pa.jpg'
-                }
-            ]
+constructor(props){
+  super(props);
+    this.state = {
+      imgsData:[
+        {
+          url: 'http://ww3.sinaimg.cn/large/d8e32accgw1f6c55xxgp2j20zk0qodry.jpg'
+        },
+        {
+          url: 'http://ww1.sinaimg.cn/large/d8e32accgw1f69b7ifm4gj20qo0qon3e.jpg'
+        },
+        {
+          url: 'http://ww1.sinaimg.cn/large/d8e32accgw1f62keeub2uj21kw2dc4pa.jpg'
         }
+      ]
     }
+}
 ```
 ### 2. Place the component, pass in the image data and ref name
 ```jsx
-    render() {
-        return (
-            <div className={styles.main}>
-                <SlideShow imgs={this.state.imgsData} ref="SlideShow"/>
-            </div>
-        );
-    }
+render() {
+  return (
+      <div className={styles.main}>
+          <SlideShow imgs={this.state.imgsData} ref="SlideShow"/>
+      </div>
+  );
+}
 ```
 ### 3. Call the open method to open the slideshow overlay, yay!
 ```jsx
-    handleSlideshowOpen(index) {
-        this.refs.SlideShow.handleModalOpen(index);
-    }
+handleSlideshowOpen(index) {
+  this.refs.SlideShow.handleModalOpen(index);
+}
 ```
 
 
@@ -86,21 +84,38 @@ npm install react-slideshow --save
 ## Documentation - props
 ### Always required
 #### props : imgs
+A Array contain several object of images detail
+```jsx
+[
+  {
+    url: 'http://ww3.sinaimg.cn/large/d8e32accgw1f6c55xxgp2j20zk0qodry.jpg'
+  },
+  {
+    url: 'http://ww1.sinaimg.cn/large/d8e32accgw1f69b7ifm4gj20qo0qon3e.jpg'
+  },
+  {
+    url: 'http://ww1.sinaimg.cn/large/d8e32accgw1f62keeub2uj21kw2dc4pa.jpg'
+  }
+]
+```
 #### props : ref
 Ref the components to call the "handleModalOpen()" method.
+```jsx
+<SlideShow imgs={this.state.imgsData} ref="SlideShow"/>
+```
 #### func : handleModalOpen(index)
 ##### Pass in the index num to control the initial image in the slideshow
 ```jsx
-    handleSlideshowOpen(index) {
-        this.refs.SlideShow.handleModalOpen(index);
-    }
-    render() {
-        return (
-            <div className="main">
-                <SlideShow imgs={imgUrlList} ref="SlideShow"/>
-            </div>
-        );
-    }
+handleSlideshowOpen(index) {
+  this.refs.SlideShow.handleModalOpen(index);
+}
+render() {
+  return (
+    <div className="main">
+        <SlideShow imgs={imgUrlList} ref="SlideShow"/>
+    </div>
+  );
+}
 ```
 ### Optional
 #### lazyLoad: bool
@@ -122,23 +137,31 @@ If false, the sequence indicator of image will not show.
 
 
 ## Tips & Tricks
-- Zoom is cool, try it!
 - You can use the Up/Down/Left/Right to control the image slide.
 - The ESC can quit the slideshow overlay too.
-- If the ```handleModalOpen([index])``` method not receive the index prop, it will show the first image.
+- If the ```handleModalOpen([index])``` method not receive the index prop, it will show the first image in 'imgs'.
 
 
 
 ## Dependencies
-#### react-portal(https://github.com/tajo/react-portal)
-#### tween.js(https://github.com/CreateJS/TweenJS)
+- ```react-portal``` (https://github.com/tajo/react-portal)
+- ```tween.js``` (https://github.com/CreateJS/TweenJS)
 
 
 
 ## On the road
 - Image with Title/text overlay
 - More transition animate
+- Non dependence
 - Thumbnails
+
+
+
+##Changelog
+- 1.2.2
+##### Fix the import error     - Now you can easy to import this components from this lib
+##### Fix the no imgs prop err - Now the component will not crush when it's no receive 'imgs' prop
+
 
 
 ## Credit

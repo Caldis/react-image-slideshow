@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import styles from './app.css';
 import jsStyles from './appStyle.js';
-import Portal from 'react-portal';
+import Portal from'react-portal';
 import TWEEN from 'tween.js';
 
-class Slidershow extends React.Component {
+class Slideshow extends React.Component {
     constructor(props) {
         super(props);
 
@@ -649,7 +649,7 @@ class Slidershow extends React.Component {
     }
 }
 
-Slidershow.defaultProps = {
+Slideshow.defaultProps = {
     lazyLoad: true,
     infinitySwitch: true,
     switchButton: true,
@@ -659,11 +659,11 @@ Slidershow.defaultProps = {
     imgs: []
 };
 
-Slidershow.propTypes = {
+Slideshow.propTypes = {
     imgs: React.PropTypes.array.isRequired
 };
 
-export default Slidershow;
+export default Slideshow;
 
 // TODO
 // 图片放大/Done

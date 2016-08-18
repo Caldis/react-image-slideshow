@@ -1,0 +1,13 @@
+# Prevent auto-generated stuff check into npm
+.idea
+.DS_Store
+node_modules
+npm-debug.log
+
+# Cruft
+.babelrc
+.gitignore
+.npmignore
+build/bundle.js
+webpack.config.js
+webpack.prepublish.config.js

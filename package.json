@@ -1,7 +1,7 @@
 {
-  "name": "react-slideshow",
-  "version": "1.0.0",
-  "description": "A simple image slideshow with react",
+  "name": "react-image-slideshow",
+  "version": "1.2.2",
+  "description": "A simple image slideshow components with react.js",
   "author": "Caldis",
   "license": "MIT",
   "keywords": [
@@ -14,12 +14,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Caldis/react-slideshow"
+    "url": "https://github.com/Caldis/react-image-slideshow"
   },
   "bugs": {
-    "url": "https://github.com/Caldis/react-slideshow/issues"
+    "url": "https://github.com/Caldis/react-image-slideshow/issues"
   },
-  "homepage": "https://github.com/Caldis/react-slideshow",
+  "homepage": "https://github.com/Caldis/react-image-slideshow",
   "dependencies": {
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
@@ -27,6 +27,7 @@
     "tween.js": "^16.3.5"
   },
   "devDependencies": {
+    "babel-cli": "^6.11.4",
     "babel-core": "^6.8.0",
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
@@ -39,6 +40,8 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "dev": "webpack-dev-server --content-base example --devtool eval"
+    "dev": "webpack-dev-server --content-base example --devtool eval",
+    "build": "webpack --progress --colors --watch --config webpack.config.js",
+    "prePublishs": "webpack --progress --colors --watch --config webpack.prepublish.config.js"
   }
 }
