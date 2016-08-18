@@ -158,8 +158,8 @@ If false, the sequence indicator of image will not show.
 
 ##Changelog
 - 1.2.2
-##### Fix the import error     - Now you can easy to import this components from this lib
-##### Fix the no imgs prop err - Now the component will not crush when it's no receive 'imgs' prop
+Fix the import error     - Now you can easy to import this components from this lib
+Fix the no imgs prop err - Now the component will not crush when it's no receive 'imgs' prop
 
 
 
