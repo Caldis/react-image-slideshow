@@ -2,7 +2,6 @@ react-image-slideshow
 =====================
 [![npm version](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/react-image-slideshow)
 > A simple image slideshow with react.
-> Just pass the imageList, then call the open method, and, yay !
 
 
 
