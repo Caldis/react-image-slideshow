@@ -589,7 +589,7 @@ class Slideshow extends React.Component {
                                         />
                                         <div className={styles.sliderImageContainer} id={`sliderShowImageOf${index}`} style={imageMovePos}>
                                             <div className={styles.imageLoading} style={loadingStyle}>
-                                                <svg className={styles.circleLoading} width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle className={styles.circleLoadingPath} fill="none" strokeWidth="6" strokeLinecap="round" cx="33" cy="33" r="30"></circle></svg>
+                                                <svg className={styles.circleLoading} width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle className={styles.circleLoadingPath} fill="none" strokeWidth="3" strokeLinecap="round" cx="33" cy="33" r="30"></circle></svg>
                                             </div>
                                             <img
                                                 src={imageUrl}
@@ -690,5 +690,6 @@ export default Slideshow;
 // 更多动画
 // BUGS
 // 修正按钮位移state问题/Done
+// 修正IE下的问题
 // 修正放大/下载按钮图片未加载前就显示的问题/Done
 // Firefox下放大偏移/待测试

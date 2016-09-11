@@ -160,7 +160,10 @@ If false, the sequence indicator of image will not show.
 - 1.2.2
 Fix the import error     - Now you can easy to import this components from this lib
 Fix the no imgs prop err - Now the component will not crush when it's no receive 'imgs' prop
-
+- 1.2.5
+Fix the Action Bar always display problems
+Fix the error in IE
+Add loading animation
 
 
 ## Credit
