@@ -1,4 +1,5 @@
-var path    = require('path');
+var path = require('path');
+var webpack = require('webpack');
 
 var config = {
     entry: path.resolve(__dirname, './src/components/Slideshow/app.js'),
@@ -11,6 +12,13 @@ var config = {
     devServer: {
         historyApiFallback: true
     },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
+    ],
     resolve: {
         extensions: ['', '.js', '.jsx']
     },

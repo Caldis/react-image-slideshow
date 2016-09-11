@@ -1,5 +1,3 @@
-// Polyfill
-import polyfill from '../../utils/polyfill.js';
 // Libs
 import React from 'react';
 import TWEEN from 'tween.js';
@@ -7,6 +5,8 @@ import Portal from'react-portal';
 // Style
 import styles from './app.css';
 import jsStyles from './appStyle.js';
+// Polyfill
+import polyfill from '../../utils/polyfill.js';
 
 class Slideshow extends React.Component {
     constructor(props) {
