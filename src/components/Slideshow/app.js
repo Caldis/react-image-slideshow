@@ -57,7 +57,7 @@ class Slideshow extends React.Component {
         this.getNextIndex                     = this.getNextIndex.bind(this);
         this.handleImageZoom                  = this.handleImageZoom.bind(this);
         this.handleImageMove                  = this.handleImageMove.bind(this);
-        this.handleImageOnLoaded              = this.handleImageOnLoaded.bind(this);
+        this.handleImageOnComplete            = this.handleImageOnComplete.bind(this);
         this.getWindow                        = this.getWindow.bind(this);
         this.preventSelect                    = this.preventSelect.bind(this);
         this.addEvent                         = this.addEvent.bind(this);
@@ -101,11 +101,13 @@ class Slideshow extends React.Component {
         }
         this.setState({
             nowImage: this.tmpNowImage,
-            isOpened: true
+            isOpened: true,
+            showAction: false
         });
         this.calSingleImageSize(this.tmpNowImage);
         this.disableBodyScroll();
         this.listenKeyDown();
+        this.handleImageOnComplete(this.tmpNowImage);
     }
     // 模态框弹出执行钩子
     handleBeforeModalOnOpen(nodeModal) {
@@ -233,7 +235,9 @@ class Slideshow extends React.Component {
         this.props.imgs ? this.props.imgs.map((imageData, urlIndex)=> {
             this.calImageSize(imageData.url, (size) => {
                 imgSizeData[urlIndex] = size;
-                this.setState({ imageSize: imgSizeData});
+                this.setState({
+                    imageSize: imgSizeData
+                });
             });
         }) : null;
     }
@@ -302,6 +306,7 @@ class Slideshow extends React.Component {
                 showAction: false
             });
             this.calSingleImageSize(prevNodeIndex);
+            this.handleImageOnComplete(prevNodeIndex);
             let nodeNow = document.getElementById(`sliderShowImageOf${this.state.nowImage}`);
             let nodePrevious = document.getElementById(`sliderShowImageOf${prevNodeIndex}`);
             this.handleImageAnimate(nodeNow, nodePrevious);
@@ -317,6 +322,7 @@ class Slideshow extends React.Component {
                 showAction: false
             });
             this.calSingleImageSize(nextNodeIndex);
+            this.handleImageOnComplete(nextNodeIndex);
             let nodeNow = document.getElementById(`sliderShowImageOf${this.state.nowImage}`);
             let nodeNext = document.getElementById(`sliderShowImageOf${nextNodeIndex}`);
             this.handleImageAnimate(nodeNow, nodeNext);
@@ -434,9 +440,17 @@ class Slideshow extends React.Component {
     }
 
 
-    // 图片加载完成回调
-    handleImageOnLoaded(e) {
-        this.setState({ showAction: true });
+    // 当前图片加载完成执行
+    handleImageOnComplete(nowImage) {
+        clearInterval(this.checkNowImageLoaded);
+        let img = new Image();
+        img.src = this.props.imgs[nowImage ? nowImage : this.state.nowImage ? this.state.nowImage : this.tmpNowImage].url;
+        this.checkNowImageLoaded = setInterval(() => {
+            if(img.complete) {
+                this.setState({ showAction: true });
+                clearInterval(this.checkNowImageLoaded);
+            }
+        }, 250);
     }
 
 
@@ -528,8 +542,10 @@ class Slideshow extends React.Component {
         this.handleImageKeySwitch(key);
     }
 
+
+
     render() {
-        //Tween渲染必须
+        //Tween
         function animate(time) {
             requestAnimationFrame(animate);
             TWEEN.update(time);
@@ -596,7 +612,6 @@ class Slideshow extends React.Component {
                                                 className={styles.sliderImage}
                                                 style={Object.assign({}, this.state.imageSize[index], this.state.imageSizeAnimate)}
                                                 onSelect={this.preventSelect}
-                                                onLoad={this.handleImageOnLoaded}
                                             />
                                             <div
                                                 className={styles.imageAction}
