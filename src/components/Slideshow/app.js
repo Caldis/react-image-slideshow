@@ -439,7 +439,7 @@ class Slideshow extends React.Component {
         if(this.originalSize.height > this.window.innerHeight) {
             imgPosY = ((this.originalSize.height - this.window.innerHeight)/2 + this.imageZoomMargin) - (this.imageMoveRange.y*(e.clientY/this.window.innerHeight));
         } else {
-            imgPosY = (this.window.innerHeight - this.originalSize.height)/2 + this.originalSize.height;
+            imgPosY = 0;
         }
         this.setState({
             imageMovePos: {
