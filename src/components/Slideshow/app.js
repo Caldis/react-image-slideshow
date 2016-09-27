@@ -15,8 +15,6 @@ class Slideshow extends React.Component {
         polyfill();
 
         this.window = null;
-        this.keyEvent = null;
-        this.bodyAttr = null;
         this.resizeRatio = 0.90;
         this.onAnimate = false;
         this.tmpNowImage = null;
@@ -56,6 +54,8 @@ class Slideshow extends React.Component {
         this.getPrevIndex                     = this.getPrevIndex.bind(this);
         this.getNextIndex                     = this.getNextIndex.bind(this);
         this.handleImageZoom                  = this.handleImageZoom.bind(this);
+        this.intoImageZoom                    = this.intoImageZoom.bind(this);
+        this.quitImageZoom                    = this.quitImageZoom.bind(this);
         this.handleImageMove                  = this.handleImageMove.bind(this);
         this.handleImageOnComplete            = this.handleImageOnComplete.bind(this);
         this.getWindow                        = this.getWindow.bind(this);
@@ -66,6 +66,7 @@ class Slideshow extends React.Component {
         this.listenKeyDown                    = this.listenKeyDown.bind(this);
         this.unListenKeyDown                  = this.unListenKeyDown.bind(this);
         this.handleKeyDown                    = this.handleKeyDown.bind(this);
+        this.getFileNameWithExt               = this.getFileNameWithExt.bind(this);
     }
 
 
@@ -389,48 +390,56 @@ class Slideshow extends React.Component {
     // 缩放
     handleImageZoom(imageIndex) {
         if(!this.imageInZoom) {
-            this.tmpNowImage = imageIndex;
-            this.minImageSize = this.state.imageSize[this.tmpNowImage];
-            this.originalSize = this.getImageSize(this.props.imgs[this.tmpNowImage].url);
-            this.imageMoveRange = {
-                x: (this.originalSize.width - this.window.innerWidth) + (2 * this.imageZoomMargin),
-                y: (this.originalSize.height - this.window.innerHeight) + (2 * this.imageZoomMargin)
-            };
-            let imgSizeData = JSON.parse(JSON.stringify(this.state.imageSize));
-            imgSizeData[this.tmpNowImage] = this.originalSize;
-            this.addEvent(this.window, 'mousemove', this.handleImageMove);
-            this.removeEvent(this.window, 'resize', this.calNowImageSize);
-            this.setState({
-                imageSize: imgSizeData,
-                imageZoomQuit: { zIndex: 200 },
-                showAction: false
-            });
-            this.imageInZoom = true;
+            this.intoImageZoom(imageIndex);
         } else {
-            let imgSizeData = JSON.parse(JSON.stringify(this.state.imageSize));
-            imgSizeData[this.tmpNowImage] = this.minImageSize;
-            this.removeEvent(this.window, 'mousemove', this.handleImageMove);
-            this.addEvent(this.window, 'resize', this.calNowImageSize);
-            this.setState({
-                imageMovePos: null,
-                imageSize: imgSizeData,
-                imageZoomQuit: { zIndex: -100 },
-                showAction: true
-            });
-            this.imageInZoom = false;
+            this.quitImageZoom();
         }
+    }
+    intoImageZoom(imageIndex) {
+        this.tmpNowImage = imageIndex;
+        this.minImageSize = this.state.imageSize[this.tmpNowImage];
+        this.originalSize = this.getImageSize(this.props.imgs[this.tmpNowImage].url);
+        this.imageMoveRange = {
+            x: (this.originalSize.width - this.window.innerWidth) + (2 * this.imageZoomMargin),
+            y: (this.originalSize.height - this.window.innerHeight) + (2 * this.imageZoomMargin)
+        };
+        let imgSizeData = this.state.imageSize.map((imgData, imgIndex) => {
+            return imgIndex == this.tmpNowImage ? this.originalSize : imgData;
+        });
+        this.addEvent(this.window, 'mousemove', this.handleImageMove);
+        this.removeEvent(this.window, 'resize', this.calNowImageSize);
+        this.setState({
+            imageSize: imgSizeData,
+            imageZoomQuit: { zIndex: 200 },
+            showAction: false
+        });
+        this.imageInZoom = true;
+    }
+    quitImageZoom() {
+        let imgSizeData = this.state.imageSize.map((imgData, imgIndex) => {
+            return imgIndex == this.tmpNowImage ? this.minImageSize : imgData;
+        });
+        this.removeEvent(this.window, 'mousemove', this.handleImageMove);
+        this.addEvent(this.window, 'resize', this.calNowImageSize);
+        this.setState({
+            imageMovePos: null,
+            imageSize: imgSizeData,
+            imageZoomQuit: { zIndex: -100 },
+            showAction: true
+        });
+        this.imageInZoom = false;
     }
     handleImageMove(e) {
         let imgPosX,imgPosY = null;
         if(this.originalSize.width > this.window.innerWidth) {
-            imgPosX = this.imageZoomMargin - (this.imageMoveRange.x*(e.clientX/this.window.innerWidth));
+            imgPosX = ((this.originalSize.width - this.window.innerWidth)/2 + this.imageZoomMargin) - (this.imageMoveRange.x*(e.clientX/this.window.innerWidth));
         } else {
             imgPosX = 0;
         }
         if(this.originalSize.height > this.window.innerHeight) {
-            imgPosY = this.imageZoomMargin - (this.imageMoveRange.y*(e.clientY/this.window.innerHeight)) + this.originalSize.height/2
+            imgPosY = ((this.originalSize.height - this.window.innerHeight)/2 + this.imageZoomMargin) - (this.imageMoveRange.y*(e.clientY/this.window.innerHeight));
         } else {
-            imgPosY = (this.window.innerHeight - this.originalSize.height)/2 + this.originalSize.height/2;
+            imgPosY = (this.window.innerHeight - this.originalSize.height)/2 + this.originalSize.height;
         }
         this.setState({
             imageMovePos: {
@@ -494,41 +503,33 @@ class Slideshow extends React.Component {
 
     // 启用Body滚动
     enableBodyScroll() {
-        if(this.bodyAttr) {
-            document.getElementsByTagName('body')[0].style.position = this.bodyAttr;
-            this.bodyAttr = null;
-        } else {
-            document.getElementsByTagName('body')[0].style.position = '';
-        }
+        // document.getElementsByTagName('body')[0].style.position = this.bodyAttr.position;
+        // document.getElementsByTagName('body')[0].style.width    = this.bodyAttr.width;
+        document.getElementsByTagName('body')[0].style.overflow = this.bodyAttr.overflow;
+        this.bodyAttr = null;
     }
     // 关闭Body滚动
     disableBodyScroll() {
-        if(!this.bodyAttr) {
-            this.bodyAttr = document.getElementsByTagName('body')[0].style.position;
-            document.getElementsByTagName('body')[0].style.position = 'fixed';
-        } else {
-            document.getElementsByTagName('body')[0].style.position = 'fixed';
-        }
+        this.bodyAttr = {
+            // position : document.getElementsByTagName('body')[0].style.position,
+            // width    : document.getElementsByTagName('body')[0].style.width,
+            overflow : document.getElementsByTagName('body')[0].style.overflow,
+        };
+        // document.getElementsByTagName('body')[0].style.position = 'fixed';
+        // document.getElementsByTagName('body')[0].style.width    = '100%';
+        document.getElementsByTagName('body')[0].style.overflow = 'hidden';
     }
 
 
 
     // 监听键盘事件
     listenKeyDown() {
-        if(!this.keyEvent) {
-            this.keyEvent = document.onkeydown;
-            document.onkeydown = this.handleKeyDown;
-        } else {
-            document.onkeydown = this.handleKeyDown;
-        }
+        this.keyEvent = document.onkeydown;
+        document.onkeydown = this.handleKeyDown;
     }
     unListenKeyDown() {
-        if(this.keyEvent) {
-            document.onkeydown = this.keyEvent;
-            this.keyEvent = null;
-        } else {
-            document.onkeydown = null;
-        }
+        document.onkeydown = this.keyEvent;
+        this.keyEvent = null;
     }
     handleKeyDown(e){
         let ie = false;
@@ -540,6 +541,11 @@ class Slideshow extends React.Component {
             key = e.keyCode;
         }
         this.handleImageKeySwitch(key);
+    }
+
+
+    getFileNameWithExt(path) {
+        return this.getFileName(path) + '.' + this.getFileExt(path);
     }
 
 
@@ -587,22 +593,19 @@ class Slideshow extends React.Component {
                     <div className={styles.sliderImageListWrapper}>
                         {
                             (this.props.imgs && this.state.imageSize) ? this.props.imgs.map((imageData,index)=> {
+
                                 let imageWrapperStyle = (index == this.state.nowImage ? jsStyles.imageWrapperShowStyle : jsStyles.imageWrapperHideStyle);
                                 let imageMovePos = (index == this.state.nowImage ? this.state.imageMovePos : null);
                                 let imageUrl = this.props.lazyLoad ? (index == this.state.nowImage ? imageData.url : (this.state.imageSize[index].width == 0 ? '' : imageData.url)) : imageData.url;
-                                let actionStyle = {
+                                let imageActionStyle = {
                                     top: this.window.innerHeight / 2 - this.state.imageSize[index].height / 2,
                                     right: this.window.innerWidth / 2 - this.state.imageSize[index].width / 2 - 48,
                                     display: (this.state.showAction ? 'block' : 'none')
                                 };
                                 let loadingStyle = { display: (this.props.loading ? 'block' : 'none') };
+
                                 return (
                                     <div className={styles.sliderImageWrapper} key={index} style={imageWrapperStyle}>
-                                        <div
-                                            className={styles.sliderCloser}
-                                            onClickCapture={() => this.handleModalClose()}
-                                            onMouseOver={this.handleImageCloserHover}
-                                        />
                                         <div className={styles.sliderImageContainer} id={`sliderShowImageOf${index}`} style={imageMovePos}>
                                             <div className={styles.imageLoading} style={loadingStyle}>
                                                 <svg className={styles.circleLoading} width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle className={styles.circleLoadingPath} fill="none" strokeWidth="3" strokeLinecap="round" cx="33" cy="33" r="30"></circle></svg>
@@ -613,39 +616,43 @@ class Slideshow extends React.Component {
                                                 style={Object.assign({}, this.state.imageSize[index], this.state.imageSizeAnimate)}
                                                 onSelect={this.preventSelect}
                                             />
-                                            <div
-                                                className={styles.imageAction}
-                                                style={actionStyle}
-                                            >
-                                                {
-                                                    this.props.zoomButton ?
+                                        </div>
+                                        <div className={styles.imageAction} style={imageActionStyle}>
+                                            {
+                                                this.props.zoomButton ?
                                                     <a className={styles.imageZoom} onClickCapture={() => this.handleImageZoom(index)}>
                                                         <svg className={styles.actionButtonIcons} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
                                                     </a> : null
-                                                }
-                                                {
-                                                    this.props.downloadButton ?
-                                                    <a className={styles.imageDownLoad} href={imageData.url} download={'保存图片'}>
+                                            }
+                                            {
+                                                this.props.downloadButton ?
+                                                    <a className={styles.imageDownLoad} href={imageData.url} download={`image`}>
                                                         <svg className={styles.actionButtonIcons} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
                                                     </a> : null
-                                                }
-                                            </div>
+                                            }
                                         </div>
-                                        <div className={styles.imageSwitch} style={this.state.imageSize[index]}>
+                                        <div className={styles.imageSwitchContainer}>
                                             <div
-                                                className={styles.switchOverlay}
+                                                className={styles.sliderCloser}
+                                                onClickCapture={() => this.handleModalClose()}
                                                 onMouseOver={this.handleImageCloserHover}
                                             />
-                                            <div
-                                                className={styles.leftSwitch}
-                                                onClickCapture={() => this.handleImageSliderToPrevious()}
-                                                onMouseOver={this.handleImageSliderToPreviousHover}
-                                            />
-                                            <div
-                                                className={styles.rightSwitch}
-                                                onClickCapture={() => this.handleImageSliderToNext()}
-                                                onMouseOver={this.handleImageSliderToNextHover}
-                                            />
+                                            <div className={styles.imageSwitch} style={this.state.imageSize[index]}>
+                                                <div
+                                                    className={styles.switchOverlay}
+                                                    onMouseOver={this.handleImageCloserHover}
+                                                />
+                                                <div
+                                                    className={styles.leftSwitch}
+                                                    onClickCapture={() => this.handleImageSliderToPrevious()}
+                                                    onMouseOver={this.handleImageSliderToPreviousHover}
+                                                />
+                                                <div
+                                                    className={styles.rightSwitch}
+                                                    onClickCapture={() => this.handleImageSliderToNext()}
+                                                    onMouseOver={this.handleImageSliderToNextHover}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 );

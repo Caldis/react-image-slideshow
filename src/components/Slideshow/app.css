@@ -137,12 +137,20 @@
 }
 .sliderImageContainer {
     opacity: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sliderImageContainerOnZoom {
+    composes: sliderImageContainer;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 .sliderImage {
-    position: absolute;
+    z-index: 1;
     border-radius: 2px;
-    left: 0; top: 0; right: 0; bottom: 0;
-    margin: auto;
     transition: .3s height, .3s width;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -173,12 +181,14 @@
 .imageLoading {
     position: absolute;
     top: 46vh;
+    left: 0;
     width: 100%;
     text-align: center;
 }
 .imageAction {
     position: absolute;
     width: 30px;
+    z-index: 2;
 }
 .imageActionButton {
     height: 30px;
@@ -206,8 +216,16 @@
 
 
 /*切换叠层*/
+.imageSwitchContainer {
+    composes: sliderImageContainer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
 .imageSwitch {
     composes: sliderImage;
+    position: relative;
 }
 .switchOverlay {
     position: absolute;
