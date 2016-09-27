@@ -503,20 +503,14 @@ class Slideshow extends React.Component {
 
     // 启用Body滚动
     enableBodyScroll() {
-        // document.getElementsByTagName('body')[0].style.position = this.bodyAttr.position;
-        // document.getElementsByTagName('body')[0].style.width    = this.bodyAttr.width;
         document.getElementsByTagName('body')[0].style.overflow = this.bodyAttr.overflow;
         this.bodyAttr = null;
     }
     // 关闭Body滚动
     disableBodyScroll() {
         this.bodyAttr = {
-            // position : document.getElementsByTagName('body')[0].style.position,
-            // width    : document.getElementsByTagName('body')[0].style.width,
             overflow : document.getElementsByTagName('body')[0].style.overflow,
         };
-        // document.getElementsByTagName('body')[0].style.position = 'fixed';
-        // document.getElementsByTagName('body')[0].style.width    = '100%';
         document.getElementsByTagName('body')[0].style.overflow = 'hidden';
     }
 
