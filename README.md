@@ -123,6 +123,12 @@ Save the network
 #### infinitySwitch: bool
 ##### default: true
 If false, the image will back to head after you view to end.
+#### switchButton: bool
+##### default: true
+If false, the switchButton on screen side will not show.
+#### switchKey: bool
+##### default: true
+If false, the key switch will not be able.
 #### downloadButton: bool
 ##### default: true
 If false, the download button will not show.
@@ -164,6 +170,9 @@ Fix the no imgs prop err - Now the component will not crush when it's no receive
 Fix the Action Bar always display problems
 Fix the error in IE
 Add loading animation
+- 1.4.0
+Fix the position dislocation when zoom on Firefox low version
+Add props for disable key switch;
 
 
 ## Credit

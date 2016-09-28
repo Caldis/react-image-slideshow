@@ -107,7 +107,7 @@ class Slideshow extends React.Component {
         });
         this.calSingleImageSize(this.tmpNowImage);
         this.disableBodyScroll();
-        this.listenKeyDown();
+        this.props.switchKey ? this.listenKeyDown() : null;
         this.handleImageOnComplete(this.tmpNowImage);
     }
     // 模态框弹出执行钩子
@@ -131,7 +131,7 @@ class Slideshow extends React.Component {
         this.onAnimate = true;
         this.setState({ isOpened: false });
         this.enableBodyScroll();
-        this.unListenKeyDown();
+        this.props.switchKey ? this.unListenKeyDown() : null;
     }
     // 模态框关闭执行钩子
     handleModalBeforeClose(nodeModal, removeFromDom) {
@@ -629,22 +629,22 @@ class Slideshow extends React.Component {
                                             <div
                                                 className={styles.sliderCloser}
                                                 onClickCapture={() => this.handleModalClose()}
-                                                onMouseOver={this.handleImageCloserHover}
+                                                onMouseOver={this.props.switchButton ? this.handleImageCloserHover : null}
                                             />
                                             <div className={styles.imageSwitch} style={this.state.imageSize[index]}>
                                                 <div
                                                     className={styles.switchOverlay}
-                                                    onMouseOver={this.handleImageCloserHover}
+                                                    onMouseOver={this.props.switchButton ? this.handleImageCloserHover : null}
                                                 />
                                                 <div
                                                     className={styles.leftSwitch}
                                                     onClickCapture={() => this.handleImageSliderToPrevious()}
-                                                    onMouseOver={this.handleImageSliderToPreviousHover}
+                                                    onMouseOver={this.props.switchButton ? this.handleImageSliderToPreviousHover : null}
                                                 />
                                                 <div
                                                     className={styles.rightSwitch}
                                                     onClickCapture={() => this.handleImageSliderToNext()}
-                                                    onMouseOver={this.handleImageSliderToNextHover}
+                                                    onMouseOver={this.props.switchButton ? this.handleImageSliderToNextHover : null}
                                                 />
                                             </div>
                                         </div>
@@ -683,6 +683,7 @@ Slideshow.defaultProps = {
     lazyLoad: true,
     infinitySwitch: true,
     switchButton: true,
+    switchKey: true,
     downloadButton: true,
     loading: true,
     zoomButton: true,

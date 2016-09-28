@@ -22249,7 +22249,7 @@
 	            });
 	            this.calSingleImageSize(this.tmpNowImage);
 	            this.disableBodyScroll();
-	            this.listenKeyDown();
+	            this.props.switchKey ? this.listenKeyDown() : null;
 	            this.handleImageOnComplete(this.tmpNowImage);
 	        }
 	        // 模态框弹出执行钩子
@@ -22274,7 +22274,7 @@
 	            this.onAnimate = true;
 	            this.setState({ isOpened: false });
 	            this.enableBodyScroll();
-	            this.unListenKeyDown();
+	            this.props.switchKey ? this.unListenKeyDown() : null;
 	        }
 	        // 模态框关闭执行钩子
 
@@ -22613,10 +22613,8 @@
 	                imgPosX = 0;
 	            }
 	            if (this.originalSize.height > this.window.innerHeight) {
-	                console.log('1');
 	                imgPosY = (this.originalSize.height - this.window.innerHeight) / 2 + this.imageZoomMargin - this.imageMoveRange.y * (e.clientY / this.window.innerHeight);
 	            } else {
-	                console.log('2');
 	                imgPosY = 0;
 	            }
 	            this.setState({
@@ -22862,28 +22860,28 @@
 	                                        onClickCapture: function onClickCapture() {
 	                                            return _this8.handleModalClose();
 	                                        },
-	                                        onMouseOver: _this8.handleImageCloserHover
+	                                        onMouseOver: _this8.props.switchButton ? _this8.handleImageCloserHover : null
 	                                    }),
 	                                    _react2.default.createElement(
 	                                        'div',
 	                                        { className: _app2.default.imageSwitch, style: _this8.state.imageSize[index] },
 	                                        _react2.default.createElement('div', {
 	                                            className: _app2.default.switchOverlay,
-	                                            onMouseOver: _this8.handleImageCloserHover
+	                                            onMouseOver: _this8.props.switchButton ? _this8.handleImageCloserHover : null
 	                                        }),
 	                                        _react2.default.createElement('div', {
 	                                            className: _app2.default.leftSwitch,
 	                                            onClickCapture: function onClickCapture() {
 	                                                return _this8.handleImageSliderToPrevious();
 	                                            },
-	                                            onMouseOver: _this8.handleImageSliderToPreviousHover
+	                                            onMouseOver: _this8.props.switchButton ? _this8.handleImageSliderToPreviousHover : null
 	                                        }),
 	                                        _react2.default.createElement('div', {
 	                                            className: _app2.default.rightSwitch,
 	                                            onClickCapture: function onClickCapture() {
 	                                                return _this8.handleImageSliderToNext();
 	                                            },
-	                                            onMouseOver: _this8.handleImageSliderToNextHover
+	                                            onMouseOver: _this8.props.switchButton ? _this8.handleImageSliderToNextHover : null
 	                                        })
 	                                    )
 	                                )
@@ -22931,6 +22929,7 @@
 	    lazyLoad: true,
 	    infinitySwitch: true,
 	    switchButton: true,
+	    switchKey: true,
 	    downloadButton: true,
 	    loading: true,
 	    zoomButton: true,
