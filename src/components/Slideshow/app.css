@@ -54,16 +54,28 @@
     left: 30px;
     transition: all .3s;
 }
-.toPreviousButtonMove {
-    left: 40px;
+.toPreviousButton:hover {
+    background-color: white !important;
+}
+.toPreviousButton:active {
+    background-color: #888888 !important;
+}
+.toPreviousButton:hover svg {
+    fill: black !important;
 }
 .toNextButton {
     composes: switchImageButton;
     right: 30px;
     transition: all .3s;
 }
-.toNextButtonMove {
-    right: 40px;
+.toNextButton:hover {
+    background-color: white !important;
+}
+.toNextButton:active {
+    background-color: #888888 !important;
+}
+.toNextButton:hover svg {
+    fill: black !important;
 }
 .switchButtonIcons {
     width: 100%;

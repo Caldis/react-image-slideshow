@@ -13,6 +13,12 @@ var config = {
         historyApiFallback: true
     },
     plugins: [
+        new webpack.DefinePlugin({
+            // 消除警告
+            "process.env": {
+                NODE_ENV: JSON.stringify("production")
+            }
+        }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false

@@ -172,8 +172,10 @@ Fix the error in IE
 Add loading animation
 - 1.4.0
 Fix the position dislocation when zoom on Firefox low version
-Add props for disable key switch;
-
+Add props for disable key switch
+- 1.4.1
+Fix the bug when using ESC to quit the sildeshow
+Add the hover/active effect on switch button
 
 ## Credit
 - Special thank image of example pages from ```森画谨制```(http://weibo.com/senhuahua)

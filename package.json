@@ -1,6 +1,6 @@
 {
   "name": "react-image-slideshow",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "A simple image slideshow components with react.js",
   "author": "Caldis",
   "license": "MIT",
@@ -42,6 +42,6 @@
   "scripts": {
     "dev": "webpack-dev-server --content-base example --devtool eval",
     "build": "webpack --progress --colors --watch --config webpack.config.js",
-    "prePublishs": "webpack --progress --colors --watch --config webpack.prepublish.config.js"
+    "prePublishs": "webpack --progress --colors --config webpack.prepublish.config.js"
   }
 }

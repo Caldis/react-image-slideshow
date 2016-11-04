@@ -88,7 +88,9 @@ class Slideshow extends React.Component {
     }
     componentWillUpdate(nextProps, nextState) {}
     componentDidUpdate(prevProps, prevState) {}
-    componentWillUnmount() {}
+    componentWillUnmount() {
+
+    }
 
 
 
@@ -107,7 +109,7 @@ class Slideshow extends React.Component {
         });
         this.calSingleImageSize(this.tmpNowImage);
         this.disableBodyScroll();
-        this.props.switchKey ? this.listenKeyDown() : null;
+        this.props.switchKey && this.listenKeyDown();
         this.handleImageOnComplete(this.tmpNowImage);
     }
     // 模态框弹出执行钩子
@@ -128,13 +130,16 @@ class Slideshow extends React.Component {
     }
     // 模态框关闭
     handleModalClose() {
-        this.onAnimate = true;
         this.setState({ isOpened: false });
-        this.enableBodyScroll();
-        this.props.switchKey ? this.unListenKeyDown() : null;
     }
     // 模态框关闭执行钩子
     handleModalBeforeClose(nodeModal, removeFromDom) {
+        // 執手尾
+        this.imageInZoom && this.quitImageZoom();
+        this.onAnimate = true;
+        this.enableBodyScroll();
+        this.props.switchKey && this.unListenKeyDown();
+
         let self = this;
         new TWEEN.Tween({ opacity: 1 })
             .to({ opacity: 0 }, 300)
@@ -233,14 +238,14 @@ class Slideshow extends React.Component {
     }
     calAllImageSize() {
         let imgSizeData = JSON.parse(JSON.stringify(this.state.imageSize));
-        this.props.imgs ? this.props.imgs.map((imageData, urlIndex)=> {
+        this.props.imgs && this.props.imgs.map((imageData, urlIndex)=> {
             this.calImageSize(imageData.url, (size) => {
                 imgSizeData[urlIndex] = size;
                 this.setState({
                     imageSize: imgSizeData
                 });
             });
-        }) : null;
+        });
     }
     calSingleImageSize(urlIndex) {
         if(this.state.imageSize && this.props.imgs) {
@@ -270,21 +275,39 @@ class Slideshow extends React.Component {
     // 图片切换按钮动画
     handleImageSliderToPreviousHover() {
         if(!this.onAnimate) {
-            document.getElementById(`toPrevButton`).style.left = '40px';
-            document.getElementById(`toNextButton`).style.right = '30px';
+            this.setPrevButtonHover()
         }
     }
     handleImageSliderToNextHover() {
         if(!this.onAnimate) {
-            document.getElementById(`toPrevButton`).style.left = '30px';
-            document.getElementById(`toNextButton`).style.right = '40px';
+            this.setToNextButtonHover();
         }
     }
     handleImageCloserHover() {
         if(!this.onAnimate) {
-            document.getElementById(`toPrevButton`).style.left = '30px';
-            document.getElementById(`toNextButton`).style.right = '30px';
+            this.setPrevButtonDefault();
+            this.setToNextButtonDefault();
         }
+    }
+    setPrevButtonHover() {
+        document.getElementById(`toPrevButton`).style.left = '40px';
+        document.getElementById(`toPrevButton`).style.backgroundColor = 'white';
+        document.getElementById(`toPrevButtonIcon`).style.fill = 'black';
+    }
+    setPrevButtonDefault() {
+        document.getElementById(`toPrevButton`).style.left = '30px';
+        document.getElementById(`toPrevButton`).style.backgroundColor = 'inherit';
+        document.getElementById(`toPrevButtonIcon`).style.fill = 'white';
+    }
+    setToNextButtonHover() {
+        document.getElementById(`toNextButton`).style.right = '40px';
+        document.getElementById(`toNextButton`).style.backgroundColor = 'white';
+        document.getElementById(`toNextButtonIcon`).style.fill = 'black';
+    }
+    setToNextButtonDefault() {
+        document.getElementById(`toNextButton`).style.right = '30px';
+        document.getElementById(`toNextButton`).style.backgroundColor = 'inherit';
+        document.getElementById(`toNextButtonIcon`).style.fill = 'white';
     }
 
 
@@ -389,10 +412,10 @@ class Slideshow extends React.Component {
 
     // 缩放
     handleImageZoom(imageIndex) {
-        if(!this.imageInZoom) {
-            this.intoImageZoom(imageIndex);
-        } else {
+        if(this.imageInZoom) {
             this.quitImageZoom();
+        } else {
+            this.intoImageZoom(imageIndex);
         }
     }
     intoImageZoom(imageIndex) {
@@ -564,29 +587,28 @@ class Slideshow extends React.Component {
 
                 <div className={styles.slider}>
 
-                    <div className={styles.screenOverlay}  onClickCapture={() => this.handleModalClose()}></div>
+                    <div className={styles.screenOverlay}  onClickCapture={() => this.handleModalClose()}/>
 
                     <div
                         className={styles.sliderZoomQuit}
                         onClickCapture={() => this.handleImageZoom()}
                         style={this.state.imageZoomQuit}
-                    >
-                    </div>
+                    />
                     
                     {
-                        this.props.switchButton ?
+                        this.props.switchButton &&
                         <div className={styles.toPreviousButton} onClickCapture={() => this.handleImageSliderToPrevious()} id="toPrevButton">
                             <div className={styles.switchButtonLayer}></div>
-                            <svg className={styles.switchButtonIcons} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <svg className={styles.switchButtonIcons} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="toPrevButtonIcon">
                                 <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"/>
                                 <path d="M0-.5h24v24H0z" fill="none"/>
                             </svg>
-                        </div> : null
+                        </div>
                     }
 
                     <div className={styles.sliderImageListWrapper}>
                         {
-                            (this.props.imgs && this.state.imageSize) ? this.props.imgs.map((imageData,index)=> {
+                            (this.props.imgs && this.state.imageSize) && this.props.imgs.map((imageData,index)=> {
 
                                 let imageWrapperStyle = (index == this.state.nowImage ? jsStyles.imageWrapperShowStyle : jsStyles.imageWrapperHideStyle);
                                 let imageMovePos = (index == this.state.nowImage ? this.state.imageMovePos : null);
@@ -613,63 +635,67 @@ class Slideshow extends React.Component {
                                         </div>
                                         <div className={styles.imageAction} style={imageActionStyle}>
                                             {
-                                                this.props.zoomButton ?
-                                                    <a className={styles.imageZoom} onClickCapture={() => this.handleImageZoom(index)}>
-                                                        <svg className={styles.actionButtonIcons} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                                                    </a> : null
+                                                this.props.zoomButton &&
+                                                <a className={styles.imageZoom} onClickCapture={() => this.handleImageZoom(index)}>
+                                                    <svg className={styles.actionButtonIcons} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
+                                                </a>
                                             }
                                             {
-                                                this.props.downloadButton ?
-                                                    <a className={styles.imageDownLoad} href={imageData.url} download={`image`}>
-                                                        <svg className={styles.actionButtonIcons} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-                                                    </a> : null
+                                                this.props.downloadButton &&
+                                                <a className={styles.imageDownLoad} href={imageData.url} download={`image`}>
+                                                    <svg className={styles.actionButtonIcons} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                                                </a>
                                             }
                                         </div>
                                         <div className={styles.imageSwitchContainer}>
                                             <div
                                                 className={styles.sliderCloser}
                                                 onClickCapture={() => this.handleModalClose()}
-                                                onMouseOver={this.props.switchButton ? this.handleImageCloserHover : null}
+                                                onMouseOver={this.props.switchButton && this.handleImageCloserHover}
                                             />
                                             <div className={styles.imageSwitch} style={this.state.imageSize[index]}>
                                                 <div
                                                     className={styles.switchOverlay}
-                                                    onMouseOver={this.props.switchButton ? this.handleImageCloserHover : null}
+                                                    onMouseOver={this.props.switchButton && this.handleImageCloserHover}
                                                 />
                                                 <div
                                                     className={styles.leftSwitch}
                                                     onClickCapture={() => this.handleImageSliderToPrevious()}
-                                                    onMouseOver={this.props.switchButton ? this.handleImageSliderToPreviousHover : null}
+                                                    onMouseOver={this.props.switchButton && this.handleImageSliderToPreviousHover}
                                                 />
                                                 <div
                                                     className={styles.rightSwitch}
                                                     onClickCapture={() => this.handleImageSliderToNext()}
-                                                    onMouseOver={this.props.switchButton ? this.handleImageSliderToNextHover : null}
+                                                    onMouseOver={this.props.switchButton && this.handleImageSliderToNextHover}
                                                 />
                                             </div>
                                         </div>
                                     </div>
                                 );
-                            }) : null
+                            })
                         }
                         {
-                            this.props.indicator ?
+                            this.props.indicator &&
                             <div className={styles.imageIndicatorWrapper}>
                                 <div className={styles.imageIndicator}>
                                 <span className={styles.imageIndicatorLabel} onSelect={this.preventSelect}>
                                     {this.state.nowImage + 1} / {this.props.imgs.length}
                                 </span>
                                 </div>
-                            </div> : null
+                            </div>
                         }
                     </div>
 
                     {
-                        this.props.switchButton ?
+                        this.props.switchButton &&
                         <div className={styles.toNextButton} onClickCapture={() => this.handleImageSliderToNext()} id="toNextButton">
                             <div className={styles.switchButtonLayer}></div>
-                            <svg className={styles.switchButtonIcons} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/><path d="M0-.25h24v24H0z" fill="none"/></svg>
-                        </div> : null
+                            <svg className={styles.switchButtonIcons} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="toNextButtonIcon">
+                                <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/>
+                                <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/>
+                                <path d="M0-.25h24v24H0z" fill="none"/>
+                            </svg>
+                        </div>
                     }
 
                 </div>
