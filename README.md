@@ -19,7 +19,7 @@ react-image-slideshow
 
 ## Demo
 #### Live demo
-http://u2sk.com/code/react-image-slideshow/
+https://dn-hfdhq52q.qbox.me/9e55ac299dfff38fc0c6.html
 #### Local demo
 ```shell
 git clone https://github.com/Caldis/react-image-slideshow
@@ -179,6 +179,8 @@ Add the hover/active effect on switch button
 - 1.5.0
 Fix the action icon display when image not loading
 Add image reload button when image loading time out
+- 1.5.1
+Change the demo page link
 
 ## Credit
 - Special thank image of example pages from ```森画谨制```(http://weibo.com/senhuahua)
