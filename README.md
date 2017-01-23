@@ -26,7 +26,7 @@ git clone https://github.com/Caldis/react-image-slideshow
 cd react-image-slideshow
 npm install
 npm run dev
-open http://127.0.0.1:8080/
+opettp://127.0.0.1:8080/
 ```
  
  
@@ -176,6 +176,9 @@ Add props for disable key switch
 - 1.4.1
 Fix the bug when using ESC to quit the sildeshow
 Add the hover/active effect on switch button
+- 1.5.0
+Fix the action icon display when image not loading
+Add image reload button when image loading time out
 
 ## Credit
 - Special thank image of example pages from ```森画谨制```(http://weibo.com/senhuahua)

@@ -48,11 +48,13 @@ class Slideshow extends React.Component {
         this.handleImageSliderToNextHover     = this.handleImageSliderToNextHover.bind(this);
         this.handleImageCloserHover           = this.handleImageCloserHover.bind(this);
         this.handleImageKeySwitch             = this.handleImageKeySwitch.bind(this);
+        this.handleReloadNowImage             = this.handleReloadNowImage.bind(this);
         this.handleImageSliderToPrevious      = this.handleImageSliderToPrevious.bind(this);
         this.handleImageSliderToNext          = this.handleImageSliderToNext.bind(this);
         this.handleImageAnimate               = this.handleImageAnimate.bind(this);
         this.getPrevIndex                     = this.getPrevIndex.bind(this);
         this.getNextIndex                     = this.getNextIndex.bind(this);
+        this.imageNeedZoom                    = this.imageNeedZoom.bind(this);
         this.handleImageZoom                  = this.handleImageZoom.bind(this);
         this.intoImageZoom                    = this.intoImageZoom.bind(this);
         this.quitImageZoom                    = this.quitImageZoom.bind(this);
@@ -231,9 +233,25 @@ class Slideshow extends React.Component {
                     }
                 }
             }
+            // 重置获取超时
+            imgSizeData.timeOut = false;
             callBack(imgSizeData);
         };
-
+        //如果出错, 则设置获取超时标签
+	    img.onerror = () => {
+		    callBack({
+			    height: 0,
+			    width: 0,
+			    timeOut: true
+		    });
+	    };
+	    img.onabort = () => {
+		    callBack({
+			    height: 0,
+			    width: 0,
+			    timeOut: true
+		    });
+	    };
         img.src = imageUrl;
     }
     calAllImageSize() {
@@ -290,7 +308,7 @@ class Slideshow extends React.Component {
         }
     }
     setPrevButtonHover() {
-        document.getElementById(`toPrevButton`).style.left = '40px';
+        document.getElementById(`toPrevButton`).style.left = '30px';
         document.getElementById(`toPrevButton`).style.backgroundColor = 'white';
         document.getElementById(`toPrevButtonIcon`).style.fill = 'black';
     }
@@ -300,7 +318,7 @@ class Slideshow extends React.Component {
         document.getElementById(`toPrevButtonIcon`).style.fill = 'white';
     }
     setToNextButtonHover() {
-        document.getElementById(`toNextButton`).style.right = '40px';
+        document.getElementById(`toNextButton`).style.right = '30px';
         document.getElementById(`toNextButton`).style.backgroundColor = 'white';
         document.getElementById(`toNextButtonIcon`).style.fill = 'black';
     }
@@ -320,6 +338,18 @@ class Slideshow extends React.Component {
             this.handleImageSliderToNext();
         }
     }
+	handleReloadNowImage() {
+		if(!this.onAnimate) {
+			this.onAnimate = true;
+			let newImageData = {height: 0, width: 0, timeOut: false};
+			this.setState({
+				imageSize: this.state.imageSize.slice(0, this.state.nowImage).concat(newImageData).concat(this.state.imageSize.slice(this.state.nowImage+1, this.state.nowImage.length)),
+				imageSizeAnimate: { transition: 'initial' },
+			});
+			this.calSingleImageSize(this.state.nowImage);
+			this.handleImageOnComplete(this.state.nowImage);
+		}
+	}
     handleImageSliderToPrevious() {
         if(!this.onAnimate) {
             this.onAnimate = true;
@@ -411,6 +441,11 @@ class Slideshow extends React.Component {
 
 
     // 缩放
+    imageNeedZoom(imageIndex) {
+        // 判断是否需要缩放
+	    let size = this.getImageSize(this.props.imgs[imageIndex].url);
+	    return (size.width > this.window.innerWidth) || (size.height > this.window.innerHeight);
+    }
     handleImageZoom(imageIndex) {
         if(this.imageInZoom) {
             this.quitImageZoom();
@@ -609,7 +644,6 @@ class Slideshow extends React.Component {
                     <div className={styles.sliderImageListWrapper}>
                         {
                             (this.props.imgs && this.state.imageSize) && this.props.imgs.map((imageData,index)=> {
-
                                 let imageWrapperStyle = (index == this.state.nowImage ? jsStyles.imageWrapperShowStyle : jsStyles.imageWrapperHideStyle);
                                 let imageMovePos = (index == this.state.nowImage ? this.state.imageMovePos : null);
                                 let imageUrl = this.props.lazyLoad ? (index == this.state.nowImage ? imageData.url : (this.state.imageSize[index].width == 0 ? '' : imageData.url)) : imageData.url;
@@ -619,34 +653,68 @@ class Slideshow extends React.Component {
                                     display: (this.state.showAction ? 'block' : 'none')
                                 };
                                 let loadingStyle = { display: (this.props.loading ? 'block' : 'none') };
-
                                 return (
                                     <div className={styles.sliderImageWrapper} key={index} style={imageWrapperStyle}>
-                                        <div className={styles.sliderImageContainer} id={`sliderShowImageOf${index}`} style={imageMovePos}>
-                                            <div className={styles.imageLoading} style={loadingStyle}>
-                                                <svg className={styles.circleLoading} width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle className={styles.circleLoadingPath} fill="none" strokeWidth="3" strokeLinecap="round" cx="33" cy="33" r="30"></circle></svg>
-                                            </div>
-                                            <img
-                                                src={imageUrl}
-                                                className={styles.sliderImage}
-                                                style={Object.assign({}, this.state.imageSize[index], this.state.imageSizeAnimate)}
-                                                onSelect={this.preventSelect}
-                                            />
-                                        </div>
-                                        <div className={styles.imageAction} style={imageActionStyle}>
-                                            {
-                                                this.props.zoomButton &&
-                                                <a className={styles.imageZoom} onClickCapture={() => this.handleImageZoom(index)}>
-                                                    <svg className={styles.actionButtonIcons} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>
-                                                </a>
-                                            }
-                                            {
-                                                this.props.downloadButton &&
-                                                <a className={styles.imageDownLoad} href={imageData.url} download={`image`}>
-                                                    <svg className={styles.actionButtonIcons} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-                                                </a>
-                                            }
-                                        </div>
+	                                    {
+		                                    this.state.imageSize[index].timeOut ?
+                                                <div className={styles.reloadButtonContainer}>
+                                                    <div className={styles.reloadButtonWrapper} onClick={this.handleReloadNowImage}>
+                                                        <div className={styles.reloadButton}>
+                                                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+                                                                <path d="M0 0h24v24H0z" fill="none"/>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <span className={styles.reloadHint}>{this.props.errorHint}</span>
+                                                </div> :
+                                                <div className={styles.sliderImageContainer} id={`sliderShowImageOf${index}`} style={imageMovePos}>
+                                                    <div className={styles.imageLoading} style={loadingStyle}>
+                                                        <svg className={styles.circleLoading} width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                                            <circle className={styles.circleLoadingPath} fill="none" strokeWidth="3" strokeLinecap="round" cx="33" cy="33" r="30"></circle>
+                                                        </svg>
+                                                    </div>
+                                                    <img
+                                                        src={imageUrl}
+                                                        className={styles.sliderImage}
+                                                        style={Object.assign({}, this.state.imageSize[index], this.state.imageSizeAnimate)}
+                                                        onSelect={this.preventSelect}
+                                                    />
+                                                </div>
+	                                    }
+	                                    {
+                                            (this.state.imageSize[index].width!==0 && this.state.imageSize[index].height!==0) &&
+                                                <div className={styles.imageAction} style={imageActionStyle}>
+                                                    {
+                                                        this.props.zoomButton &&
+                                                        this.imageNeedZoom(this.state.nowImage) ?
+                                                            <a className={styles.imageZoom} onClickCapture={() => this.handleImageZoom(index)}>
+                                                                <svg className={styles.actionButtonIcons} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                                                                    <path d="M0 0h24v24H0V0z" fill="none"/>
+                                                                    <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                                                                </svg>
+                                                            </a> :
+                                                            <a className={styles.imageZoom}>
+                                                                <svg className={styles.actionButtonIconsDisabled} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                                                                    <path d="M0 0h24v24H0V0z" fill="none"/>
+                                                                    <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+                                                                </svg>
+                                                            </a>
+                                                    }
+                                                    {
+                                                        this.props.downloadButton &&
+                                                        <a className={styles.imageDownLoad} href={imageData.url}
+                                                           download={`image`}>
+                                                            <svg className={styles.actionButtonIcons} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                                                                <path d="M0 0h24v24H0z" fill="none"/>
+                                                            </svg>
+                                                        </a>
+                                                    }
+                                                </div>
+	                                    }
                                         <div className={styles.imageSwitchContainer}>
                                             <div
                                                 className={styles.sliderCloser}
@@ -714,7 +782,8 @@ Slideshow.defaultProps = {
     loading: true,
     zoomButton: true,
     indicator: true,
-    imgs: []
+    imgs: [],
+    errorHint: '图片无法载入'
 };
 
 Slideshow.propTypes = {

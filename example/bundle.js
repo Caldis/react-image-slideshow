@@ -64,7 +64,7 @@
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _app3 = __webpack_require__(180);
+	var _app3 = __webpack_require__(179);
 
 	var _app4 = _interopRequireDefault(_app3);
 
@@ -87,9 +87,9 @@
 	        var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
 
 	        _this.state = {
-	            protoImgs: ['http://ww3.sinaimg.cn/large/d8e32accgw1f6c55xxgp2j20zk0qodry.jpg', 'http://ww1.sinaimg.cn/large/d8e32accgw1f69b7ifm4gj20qo0qon3e.jpg', 'http://ww1.sinaimg.cn/large/d8e32accgw1f62keeub2uj21kw2dc4pa.jpg', 'http://ww3.sinaimg.cn/large/d8e32accgw1f62kd8cnc9j21kw16rqfi.jpg', 'http://ww4.sinaimg.cn/large/d8e32accgw1f5vv1j1leij21kw11x4a5.jpg', 'http://ww4.sinaimg.cn/large/d8e32accgw1f57j2kvgaoj21kw2dcx6p.jpg', 'http://ww2.sinaimg.cn/large/d8e32accgw1f57j2b7dytj21kw2dc7wh.jpg', 'http://ww3.sinaimg.cn/large/d8e32accgw1f51ydnrg2mj21kw24c7wh.jpg', 'http://ww1.sinaimg.cn/large/d8e32accgw1f4yf8z8z16j21kw262nlp.jpg', 'http://ww3.sinaimg.cn/large/d8e32accgw1f443p0dxd3j21kw2dc7wh.jpg', 'http://ww2.sinaimg.cn/large/d8e32accgw1f443pbvvj2j21kw2dc4qp.jpg', 'http://ww2.sinaimg.cn/large/d8e32accgw1f3cxkf16boj21kw11xqgq.jpg', 'http://ww2.sinaimg.cn/large/d8e32accgw1f3cxl55881j21kw2dc1kx.jpg'],
+	            protoImgs: ['http://tankr.net/s/medium/WTQ0.jpg', 'http://ww1.sinaimg.cn/large/d8e32accgw1f69b7ifm4gj20qo0qon3e.jpg', 'http://ww1.sinaimg.cn/large/d8e32accgw1f62keeub2uj21kw2dc4pa.jpg', 'http://ww4.sinaimg.cn/large/d8e32accgw1f5vv1j1leij21kw11x4a5.jpg', 'http://ww4.sinaimg.cn/large/d8e32accgw1f57j2kvgaoj21kw2dcx6p.jpg'],
 	            imageData: [{
-	                url: 'http://ww3.sinaimg.cn/large/d8e32accgw1f6c55xxgp2j20zk0qodry.jpg',
+	                url: 'http://tankr.net/s/medium/WTQ0.jpg',
 	                title: '图片1',
 	                text: '这里是图片1的说明文字'
 	            }, {
@@ -100,10 +100,6 @@
 	                url: 'http://ww1.sinaimg.cn/large/d8e32accgw1f62keeub2uj21kw2dc4pa.jpg',
 	                title: '图片3',
 	                text: '这里是图片3的说明文字'
-	            }, {
-	                url: 'http://ww3.sinaimg.cn/large/d8e32accgw1f62kd8cnc9j21kw16rqfi.jpg',
-	                title: '图片4',
-	                text: '这里是图片4的说明文字'
 	            }, {
 	                url: 'http://ww4.sinaimg.cn/large/d8e32accgw1f5vv1j1leij21kw11x4a5.jpg',
 	                title: '图片5',
@@ -21909,10 +21905,6 @@
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _appStyle = __webpack_require__(179);
-
-	var _appStyle2 = _interopRequireDefault(_appStyle);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22079,12 +22071,6 @@
 
 /***/ },
 /* 179 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-/***/ },
-/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22099,23 +22085,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _tween = __webpack_require__(181);
+	var _tween = __webpack_require__(180);
 
 	var _tween2 = _interopRequireDefault(_tween);
 
-	var _reactPortal = __webpack_require__(182);
+	var _reactPortal = __webpack_require__(181);
 
 	var _reactPortal2 = _interopRequireDefault(_reactPortal);
 
-	var _app = __webpack_require__(184);
+	var _app = __webpack_require__(183);
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _appStyle = __webpack_require__(186);
+	var _appStyle = __webpack_require__(185);
 
 	var _appStyle2 = _interopRequireDefault(_appStyle);
 
-	var _polyfill = __webpack_require__(187);
+	var _polyfill = __webpack_require__(186);
 
 	var _polyfill2 = _interopRequireDefault(_polyfill);
 
@@ -22176,11 +22162,13 @@
 	        _this.handleImageSliderToNextHover = _this.handleImageSliderToNextHover.bind(_this);
 	        _this.handleImageCloserHover = _this.handleImageCloserHover.bind(_this);
 	        _this.handleImageKeySwitch = _this.handleImageKeySwitch.bind(_this);
+	        _this.handleReloadNowImage = _this.handleReloadNowImage.bind(_this);
 	        _this.handleImageSliderToPrevious = _this.handleImageSliderToPrevious.bind(_this);
 	        _this.handleImageSliderToNext = _this.handleImageSliderToNext.bind(_this);
 	        _this.handleImageAnimate = _this.handleImageAnimate.bind(_this);
 	        _this.getPrevIndex = _this.getPrevIndex.bind(_this);
 	        _this.getNextIndex = _this.getNextIndex.bind(_this);
+	        _this.imageNeedZoom = _this.imageNeedZoom.bind(_this);
 	        _this.handleImageZoom = _this.handleImageZoom.bind(_this);
 	        _this.intoImageZoom = _this.intoImageZoom.bind(_this);
 	        _this.quitImageZoom = _this.quitImageZoom.bind(_this);
@@ -22249,7 +22237,7 @@
 	            });
 	            this.calSingleImageSize(this.tmpNowImage);
 	            this.disableBodyScroll();
-	            this.props.switchKey ? this.listenKeyDown() : null;
+	            this.props.switchKey && this.listenKeyDown();
 	            this.handleImageOnComplete(this.tmpNowImage);
 	        }
 	        // 模态框弹出执行钩子
@@ -22271,16 +22259,19 @@
 	    }, {
 	        key: 'handleModalClose',
 	        value: function handleModalClose() {
-	            this.onAnimate = true;
 	            this.setState({ isOpened: false });
-	            this.enableBodyScroll();
-	            this.props.switchKey ? this.unListenKeyDown() : null;
 	        }
 	        // 模态框关闭执行钩子
 
 	    }, {
 	        key: 'handleModalBeforeClose',
 	        value: function handleModalBeforeClose(nodeModal, removeFromDom) {
+	            // 執手尾
+	            this.imageInZoom && this.quitImageZoom();
+	            this.onAnimate = true;
+	            this.enableBodyScroll();
+	            this.props.switchKey && this.unListenKeyDown();
+
 	            var self = this;
 	            new _tween2.default.Tween({ opacity: 1 }).to({ opacity: 0 }, 300).easing(_tween2.default.Easing.Cubic.In).onUpdate(function () {
 	                nodeModal.style.opacity = this.opacity;
@@ -22374,9 +22365,25 @@
 	                        }
 	                    }
 	                }
+	                // 重置获取超时
+	                imgSizeData.timeOut = false;
 	                callBack(imgSizeData);
 	            };
-
+	            //如果出错, 则设置获取超时标签
+	            img.onerror = function () {
+	                callBack({
+	                    height: 0,
+	                    width: 0,
+	                    timeOut: true
+	                });
+	            };
+	            img.onabort = function () {
+	                callBack({
+	                    height: 0,
+	                    width: 0,
+	                    timeOut: true
+	                });
+	            };
 	            img.src = imageUrl;
 	        }
 	    }, {
@@ -22385,14 +22392,14 @@
 	            var _this3 = this;
 
 	            var imgSizeData = JSON.parse(JSON.stringify(this.state.imageSize));
-	            this.props.imgs ? this.props.imgs.map(function (imageData, urlIndex) {
+	            this.props.imgs && this.props.imgs.map(function (imageData, urlIndex) {
 	                _this3.calImageSize(imageData.url, function (size) {
 	                    imgSizeData[urlIndex] = size;
 	                    _this3.setState({
 	                        imageSize: imgSizeData
 	                    });
 	                });
-	            }) : null;
+	            });
 	        }
 	    }, {
 	        key: 'calSingleImageSize',
@@ -22433,25 +22440,51 @@
 	        key: 'handleImageSliderToPreviousHover',
 	        value: function handleImageSliderToPreviousHover() {
 	            if (!this.onAnimate) {
-	                document.getElementById('toPrevButton').style.left = '40px';
-	                document.getElementById('toNextButton').style.right = '30px';
+	                this.setPrevButtonHover();
 	            }
 	        }
 	    }, {
 	        key: 'handleImageSliderToNextHover',
 	        value: function handleImageSliderToNextHover() {
 	            if (!this.onAnimate) {
-	                document.getElementById('toPrevButton').style.left = '30px';
-	                document.getElementById('toNextButton').style.right = '40px';
+	                this.setToNextButtonHover();
 	            }
 	        }
 	    }, {
 	        key: 'handleImageCloserHover',
 	        value: function handleImageCloserHover() {
 	            if (!this.onAnimate) {
-	                document.getElementById('toPrevButton').style.left = '30px';
-	                document.getElementById('toNextButton').style.right = '30px';
+	                this.setPrevButtonDefault();
+	                this.setToNextButtonDefault();
 	            }
+	        }
+	    }, {
+	        key: 'setPrevButtonHover',
+	        value: function setPrevButtonHover() {
+	            document.getElementById('toPrevButton').style.left = '30px';
+	            document.getElementById('toPrevButton').style.backgroundColor = 'white';
+	            document.getElementById('toPrevButtonIcon').style.fill = 'black';
+	        }
+	    }, {
+	        key: 'setPrevButtonDefault',
+	        value: function setPrevButtonDefault() {
+	            document.getElementById('toPrevButton').style.left = '30px';
+	            document.getElementById('toPrevButton').style.backgroundColor = 'inherit';
+	            document.getElementById('toPrevButtonIcon').style.fill = 'white';
+	        }
+	    }, {
+	        key: 'setToNextButtonHover',
+	        value: function setToNextButtonHover() {
+	            document.getElementById('toNextButton').style.right = '30px';
+	            document.getElementById('toNextButton').style.backgroundColor = 'white';
+	            document.getElementById('toNextButtonIcon').style.fill = 'black';
+	        }
+	    }, {
+	        key: 'setToNextButtonDefault',
+	        value: function setToNextButtonDefault() {
+	            document.getElementById('toNextButton').style.right = '30px';
+	            document.getElementById('toNextButton').style.backgroundColor = 'inherit';
+	            document.getElementById('toNextButtonIcon').style.fill = 'white';
 	        }
 
 	        // 图片切换控制
@@ -22463,6 +22496,20 @@
 	                this.handleImageSliderToPrevious();
 	            } else if (key == 39 || key == 40) {
 	                this.handleImageSliderToNext();
+	            }
+	        }
+	    }, {
+	        key: 'handleReloadNowImage',
+	        value: function handleReloadNowImage() {
+	            if (!this.onAnimate) {
+	                this.onAnimate = true;
+	                var newImageData = { height: 0, width: 0, timeOut: false };
+	                this.setState({
+	                    imageSize: this.state.imageSize.slice(0, this.state.nowImage).concat(newImageData).concat(this.state.imageSize.slice(this.state.nowImage + 1, this.state.nowImage.length)),
+	                    imageSizeAnimate: { transition: 'initial' }
+	                });
+	                this.calSingleImageSize(this.state.nowImage);
+	                this.handleImageOnComplete(this.state.nowImage);
 	            }
 	        }
 	    }, {
@@ -22552,12 +22599,19 @@
 	        // 缩放
 
 	    }, {
+	        key: 'imageNeedZoom',
+	        value: function imageNeedZoom(imageIndex) {
+	            // 判断是否需要缩放
+	            var size = this.getImageSize(this.props.imgs[imageIndex].url);
+	            return size.width > this.window.innerWidth || size.height > this.window.innerHeight;
+	        }
+	    }, {
 	        key: 'handleImageZoom',
 	        value: function handleImageZoom(imageIndex) {
-	            if (!this.imageInZoom) {
-	                this.intoImageZoom(imageIndex);
-	            } else {
+	            if (this.imageInZoom) {
 	                this.quitImageZoom();
+	            } else {
+	                this.intoImageZoom(imageIndex);
 	            }
 	        }
 	    }, {
@@ -22775,7 +22829,7 @@
 	                        },
 	                        style: this.state.imageZoomQuit
 	                    }),
-	                    this.props.switchButton ? _react2.default.createElement(
+	                    this.props.switchButton && _react2.default.createElement(
 	                        'div',
 	                        { className: _app2.default.toPreviousButton, onClickCapture: function onClickCapture() {
 	                                return _this8.handleImageSliderToPrevious();
@@ -22783,16 +22837,15 @@
 	                        _react2.default.createElement('div', { className: _app2.default.switchButtonLayer }),
 	                        _react2.default.createElement(
 	                            'svg',
-	                            { className: _app2.default.switchButtonIcons, viewBox: '0 0 24 24', xmlns: 'http://www.w3.org/2000/svg' },
+	                            { className: _app2.default.switchButtonIcons, viewBox: '0 0 24 24', xmlns: 'http://www.w3.org/2000/svg', id: 'toPrevButtonIcon' },
 	                            _react2.default.createElement('path', { d: 'M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z' }),
 	                            _react2.default.createElement('path', { d: 'M0-.5h24v24H0z', fill: 'none' })
 	                        )
-	                    ) : null,
+	                    ),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: _app2.default.sliderImageListWrapper },
-	                        this.props.imgs && this.state.imageSize ? this.props.imgs.map(function (imageData, index) {
-
+	                        this.props.imgs && this.state.imageSize && this.props.imgs.map(function (imageData, index) {
 	                            var imageWrapperStyle = index == _this8.state.nowImage ? _appStyle2.default.imageWrapperShowStyle : _appStyle2.default.imageWrapperHideStyle;
 	                            var imageMovePos = index == _this8.state.nowImage ? _this8.state.imageMovePos : null;
 	                            var imageUrl = _this8.props.lazyLoad ? index == _this8.state.nowImage ? imageData.url : _this8.state.imageSize[index].width == 0 ? '' : imageData.url : imageData.url;
@@ -22802,11 +22855,32 @@
 	                                display: _this8.state.showAction ? 'block' : 'none'
 	                            };
 	                            var loadingStyle = { display: _this8.props.loading ? 'block' : 'none' };
-
 	                            return _react2.default.createElement(
 	                                'div',
 	                                { className: _app2.default.sliderImageWrapper, key: index, style: imageWrapperStyle },
-	                                _react2.default.createElement(
+	                                _this8.state.imageSize[index].timeOut ? _react2.default.createElement(
+	                                    'div',
+	                                    { className: _app2.default.reloadButtonContainer },
+	                                    _react2.default.createElement(
+	                                        'div',
+	                                        { className: _app2.default.reloadButtonWrapper, onClick: _this8.handleReloadNowImage },
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: _app2.default.reloadButton },
+	                                            _react2.default.createElement(
+	                                                'svg',
+	                                                { viewBox: '0 0 24 24', xmlns: 'http://www.w3.org/2000/svg' },
+	                                                _react2.default.createElement('path', { d: 'M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z' }),
+	                                                _react2.default.createElement('path', { d: 'M0 0h24v24H0z', fill: 'none' })
+	                                            )
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'span',
+	                                        { className: _app2.default.reloadHint },
+	                                        _this8.props.errorHint
+	                                    )
+	                                ) : _react2.default.createElement(
 	                                    'div',
 	                                    { className: _app2.default.sliderImageContainer, id: 'sliderShowImageOf' + index, style: imageMovePos },
 	                                    _react2.default.createElement(
@@ -22825,10 +22899,10 @@
 	                                        onSelect: _this8.preventSelect
 	                                    })
 	                                ),
-	                                _react2.default.createElement(
+	                                _this8.state.imageSize[index].width !== 0 && _this8.state.imageSize[index].height !== 0 && _react2.default.createElement(
 	                                    'div',
 	                                    { className: _app2.default.imageAction, style: imageActionStyle },
-	                                    _this8.props.zoomButton ? _react2.default.createElement(
+	                                    _this8.props.zoomButton && _this8.imageNeedZoom(_this8.state.nowImage) ? _react2.default.createElement(
 	                                        'a',
 	                                        { className: _app2.default.imageZoom, onClickCapture: function onClickCapture() {
 	                                                return _this8.handleImageZoom(index);
@@ -22840,17 +22914,28 @@
 	                                            _react2.default.createElement('path', { d: 'M0 0h24v24H0V0z', fill: 'none' }),
 	                                            _react2.default.createElement('path', { d: 'M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z' })
 	                                        )
-	                                    ) : null,
-	                                    _this8.props.downloadButton ? _react2.default.createElement(
+	                                    ) : _react2.default.createElement(
 	                                        'a',
-	                                        { className: _app2.default.imageDownLoad, href: imageData.url, download: 'image' },
+	                                        { className: _app2.default.imageZoom },
+	                                        _react2.default.createElement(
+	                                            'svg',
+	                                            { className: _app2.default.actionButtonIconsDisabled, viewBox: '0 0 24 24', xmlns: 'http://www.w3.org/2000/svg' },
+	                                            _react2.default.createElement('path', { d: 'M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z' }),
+	                                            _react2.default.createElement('path', { d: 'M0 0h24v24H0V0z', fill: 'none' }),
+	                                            _react2.default.createElement('path', { d: 'M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z' })
+	                                        )
+	                                    ),
+	                                    _this8.props.downloadButton && _react2.default.createElement(
+	                                        'a',
+	                                        { className: _app2.default.imageDownLoad, href: imageData.url,
+	                                            download: 'image' },
 	                                        _react2.default.createElement(
 	                                            'svg',
 	                                            { className: _app2.default.actionButtonIcons, viewBox: '0 0 24 24', xmlns: 'http://www.w3.org/2000/svg' },
 	                                            _react2.default.createElement('path', { d: 'M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z' }),
 	                                            _react2.default.createElement('path', { d: 'M0 0h24v24H0z', fill: 'none' })
 	                                        )
-	                                    ) : null
+	                                    )
 	                                ),
 	                                _react2.default.createElement(
 	                                    'div',
@@ -22860,34 +22945,34 @@
 	                                        onClickCapture: function onClickCapture() {
 	                                            return _this8.handleModalClose();
 	                                        },
-	                                        onMouseOver: _this8.props.switchButton ? _this8.handleImageCloserHover : null
+	                                        onMouseOver: _this8.props.switchButton && _this8.handleImageCloserHover
 	                                    }),
 	                                    _react2.default.createElement(
 	                                        'div',
 	                                        { className: _app2.default.imageSwitch, style: _this8.state.imageSize[index] },
 	                                        _react2.default.createElement('div', {
 	                                            className: _app2.default.switchOverlay,
-	                                            onMouseOver: _this8.props.switchButton ? _this8.handleImageCloserHover : null
+	                                            onMouseOver: _this8.props.switchButton && _this8.handleImageCloserHover
 	                                        }),
 	                                        _react2.default.createElement('div', {
 	                                            className: _app2.default.leftSwitch,
 	                                            onClickCapture: function onClickCapture() {
 	                                                return _this8.handleImageSliderToPrevious();
 	                                            },
-	                                            onMouseOver: _this8.props.switchButton ? _this8.handleImageSliderToPreviousHover : null
+	                                            onMouseOver: _this8.props.switchButton && _this8.handleImageSliderToPreviousHover
 	                                        }),
 	                                        _react2.default.createElement('div', {
 	                                            className: _app2.default.rightSwitch,
 	                                            onClickCapture: function onClickCapture() {
 	                                                return _this8.handleImageSliderToNext();
 	                                            },
-	                                            onMouseOver: _this8.props.switchButton ? _this8.handleImageSliderToNextHover : null
+	                                            onMouseOver: _this8.props.switchButton && _this8.handleImageSliderToNextHover
 	                                        })
 	                                    )
 	                                )
 	                            );
-	                        }) : null,
-	                        this.props.indicator ? _react2.default.createElement(
+	                        }),
+	                        this.props.indicator && _react2.default.createElement(
 	                            'div',
 	                            { className: _app2.default.imageIndicatorWrapper },
 	                            _react2.default.createElement(
@@ -22901,9 +22986,9 @@
 	                                    this.props.imgs.length
 	                                )
 	                            )
-	                        ) : null
+	                        )
 	                    ),
-	                    this.props.switchButton ? _react2.default.createElement(
+	                    this.props.switchButton && _react2.default.createElement(
 	                        'div',
 	                        { className: _app2.default.toNextButton, onClickCapture: function onClickCapture() {
 	                                return _this8.handleImageSliderToNext();
@@ -22911,12 +22996,12 @@
 	                        _react2.default.createElement('div', { className: _app2.default.switchButtonLayer }),
 	                        _react2.default.createElement(
 	                            'svg',
-	                            { className: _app2.default.switchButtonIcons, viewBox: '0 0 24 24', xmlns: 'http://www.w3.org/2000/svg' },
+	                            { className: _app2.default.switchButtonIcons, viewBox: '0 0 24 24', xmlns: 'http://www.w3.org/2000/svg', id: 'toNextButtonIcon' },
 	                            _react2.default.createElement('path', { d: 'M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z' }),
 	                            _react2.default.createElement('path', { d: 'M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z' }),
 	                            _react2.default.createElement('path', { d: 'M0-.25h24v24H0z', fill: 'none' })
 	                        )
-	                    ) : null
+	                    )
 	                )
 	            );
 	        }
@@ -22934,7 +23019,8 @@
 	    loading: true,
 	    zoomButton: true,
 	    indicator: true,
-	    imgs: []
+	    imgs: [],
+	    errorHint: '图片无法载入'
 	};
 
 	Slideshow.propTypes = {
@@ -22958,7 +23044,7 @@
 	// Firefox下放大偏移/待测试
 
 /***/ },
-/* 181 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -23835,7 +23921,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 182 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23858,7 +23944,7 @@
 
 	var _CSSPropertyOperations2 = _interopRequireDefault(_CSSPropertyOperations);
 
-	var _shallowCompare = __webpack_require__(183);
+	var _shallowCompare = __webpack_require__(182);
 
 	var _shallowCompare2 = _interopRequireDefault(_shallowCompare);
 
@@ -24092,7 +24178,7 @@
 
 
 /***/ },
-/* 183 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -24122,13 +24208,13 @@
 	module.exports = shallowCompare;
 
 /***/ },
-/* 184 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(185);
+	var content = __webpack_require__(184);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(175)(content, {});
@@ -24148,7 +24234,7 @@
 	}
 
 /***/ },
-/* 185 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(174)();
@@ -24156,7 +24242,7 @@
 
 
 	// module
-	exports.push([module.id, "/*总入口*/\n.portalStyle-2oWr2 {\n    opacity: 0;\n    z-index: 100;\n    position: relative;\n}\n.slider-3fx7S {\n    position: fixed;\n    width: 100%;\n    height: 100%;\n    top: 0;\n    left: 0;\n    z-index: 100;\n}\n\n\n\n/*关闭背景层*/\n.screenOverlay-3VSUR {\n    z-index: 1;\n}\n\n\n/*切换按钮*/\n.switchImageButton-3Sqb4 {\n    position: absolute;\n    top: 50%;\n    width: 40px;\n    height: 40px;\n    z-index: 20;\n    box-sizing: border-box;\n    padding-top: 1px;\n    border-radius: 2px;\n    /*background-color: #00BCD4;*/\n    cursor: pointer;\n    transition: all .3s;\n}\n.switchButtonLayer-uqz0f {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    /*background-color: #ffffff;*/\n    opacity: 0;\n    transition: all .2s;\n}\n.switchButtonLayer-uqz0f:hover {\n    opacity: 0.2;\n}\n.switchButtonLayer-uqz0f:active {\n    opacity: 0.4;\n}\n.toPreviousButton-1ZWVL {\n    left: 30px;\n    transition: all .3s;\n}\n.toPreviousButtonMove-2KXc2 {\n    left: 40px;\n}\n.toNextButton-1dHwq {\n    right: 30px;\n    transition: all .3s;\n}\n.toNextButtonMove-3sObS {\n    right: 40px;\n}\n.switchButtonIcons-1wtSX {\n    width: 100%;\n    height: 100%;\n    fill: white;\n}\n.noUse-k_ZeB:before {\n    content: \"\";\n    top: 0;\n    left: 0;\n    background-color: #ff3466;\n    width: 50px;\n    height: 50px;\n    border-radius: 100%;\n    -webkit-animation-fill-mode: both;\n    animation-fill-mode: both;\n    position: absolute;\n    opacity: 0;\n    -webkit-animation: jumper-1COnh 1.8s 0.33333s ease-out infinite;\n}\n.noUse-k_ZeB:after {\n    content: \"\";\n    top: 0;\n    left: 0;\n    background-color: #ff3466;\n    width: 50px;\n    height: 50px;\n    border-radius: 100%;\n    -webkit-animation-fill-mode: both;\n    animation-fill-mode: both;\n    position: absolute;\n    opacity: 0;\n    -webkit-animation: jumper-1COnh 1.8s 0.66666s ease-out infinite;\n}\n\n\n/*退出缩放*/\n.sliderZoomQuit-iAtKv {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    z-index: -100;\n    cursor: zoom-out;\n}\n\n\n/*图片区域*/\n.sliderImageListWrapper-3woYC {\n    position: relative;\n    width: 100%;\n    height: 100%;\n    left: 0;\n    top: 0;\n    z-index: 15;\n    background-color: rgba(0, 0, 0, 0.8);\n    box-shadow: rgba(0, 0, 0, 0.247059) 0px 14px 45px, rgba(0, 0, 0, 0.219608) 0px 10px 18px;\n}\n.sliderImageWrapper-1ATuC {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    left: 0;\n    top: 0;\n}\n.sliderCloser-9QxjR {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    left: 0;\n    top: 0;\n}\n.sliderImageContainer-1mWBA {\n    opacity: 0;\n    width: 100%;\n    height: 100%;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.sliderImageContainerOnZoom-3k09s {\n    justify-content: flex-start;\n    align-items: flex-start;\n}\n.sliderImage-2d0oN {\n    z-index: 1;\n    border-radius: 2px;\n    transition: .3s height, .3s width;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n}\n.imageIndicatorWrapper-2JJLq {\n    position: relative;\n    width: 90px;\n    height: 100%;\n    margin: auto;\n}\n.imageIndicator-1P5CB{\n    position: absolute;\n    width: 100%;\n    height:26px;\n    bottom: 10px;\n    color: white;\n    text-align: center;\n    border-radius: 3px;\n    background-color: rgba(0, 0, 0, 0.65);\n    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);\n}\n.imageIndicatorLabel-1gFvF {\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    line-height: 26px;\n    font-size: 12px;\n}\n.imageLoading-3AmXW {\n    position: absolute;\n    top: 46vh;\n    left: 0;\n    width: 100%;\n    text-align: center;\n}\n.imageAction-2whOf {\n    position: absolute;\n    width: 30px;\n    z-index: 2;\n}\n.imageActionButton-1pmAA {\n    height: 30px;\n    margin-bottom: 5px;\n}\n.imageZoom-TCx73 {\n}\n.downloadButton-399iK {\n}\n.actionButtonIcons-L86u6 {\n    cursor: pointer;\n    width:  100%;\n    height: 30px;\n    fill: #e9e9e9;\n    transition: all .3s;\n}\n.actionButtonIcons-L86u6:hover {\n    fill: #f4f4f4;\n}\n.actionButtonIcons-L86u6:active {\n    fill: white;\n}\n\n\n/*切换叠层*/\n.imageSwitchContainer-1HCIs {\n    position: absolute;\n    top: 0;\n    left: 0;\n    z-index: 1;\n}\n.imageSwitch-1aIbt {\n    position: relative;\n}\n.switchOverlay-fqILT {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n}\n.leftSwitch-3AmZe {\n    position: absolute;\n    height: 100%;\n    width: 40%;\n    left: 0;\n    cursor: pointer;\n}\n.rightSwitch-1IUnE {\n    position: absolute;\n    height: 100%;\n    width: 40%;\n    right: 0;\n    cursor: pointer;\n}\n\n\n/*按钮动画*/\n@-webkit-keyframes jumper-1COnh {\n    0% {\n        opacity: 0;\n        -webkit-transform: scale(0);\n        transform: scale(0)\n    }\n    5% {\n        opacity: 1\n    }\n    100% {\n        -webkit-transform: scale(1);\n        transform: scale(1);\n        opacity: 0\n    }\n}\n@keyframes jumper-1COnh {\n    0% {\n        opacity: 0;\n        -webkit-transform: scale(0);\n        transform: scale(0)\n    }\n    5% {\n        opacity: 1\n    }\n    100% {\n        opacity: 0\n    }\n}\n\n\n/*Loading动画*/\n.circleLoading-g8YHQ {\n    -webkit-animation: rotator-2lGr1 1.4s linear infinite;\n    animation: rotator-2lGr1 1.4s linear infinite;\n}\n\n@-webkit-keyframes rotator-2lGr1 {\n    0% {\n        -webkit-transform: rotate(0deg);\n        transform: rotate(0deg);\n    }\n    100% {\n        -webkit-transform: rotate(270deg);\n        transform: rotate(270deg);\n    }\n}\n\n@keyframes rotator-2lGr1 {\n    0% {\n        -webkit-transform: rotate(0deg);\n        transform: rotate(0deg);\n    }\n    100% {\n        -webkit-transform: rotate(270deg);\n        transform: rotate(270deg);\n    }\n}\n.circleLoadingPath-2Y-Sp {\n    stroke-dasharray: 187;\n    stroke-dashoffset: 0;\n    -webkit-transform-origin: center;\n    transform-origin: center;\n    -webkit-animation: dash-XtFOS 1.4s ease-in-out infinite, colors-37Zis 5.6s ease-in-out infinite;\n    animation: dash-XtFOS 1.4s ease-in-out infinite, colors-37Zis 5.6s ease-in-out infinite;\n}\n@-webkit-keyframes colors-37Zis {\n    0% {\n        stroke: #4285F4;\n    }\n    25% {\n        stroke: #DE3E35;\n    }\n    50% {\n        stroke: #F7C223;\n    }\n    75% {\n        stroke: #1B9A59;\n    }\n    100% {\n        stroke: #4285F4;\n    }\n}\n\n@keyframes colors-37Zis {\n    0% {\n        stroke: #4285F4;\n    }\n    25% {\n        stroke: #DE3E35;\n    }\n    50% {\n        stroke: #F7C223;\n    }\n    75% {\n        stroke: #1B9A59;\n    }\n    100% {\n        stroke: #4285F4;\n    }\n}\n@-webkit-keyframes dash-XtFOS {\n    0% {\n        stroke-dashoffset: 187;\n    }\n    50% {\n        stroke-dashoffset: 46.75;\n        -webkit-transform: rotate(135deg);\n        transform: rotate(135deg);\n    }\n    100% {\n        stroke-dashoffset: 187;\n        -webkit-transform: rotate(450deg);\n        transform: rotate(450deg);\n    }\n}\n@keyframes dash-XtFOS {\n    0% {\n        stroke-dashoffset: 187;\n    }\n    50% {\n        stroke-dashoffset: 46.75;\n        -webkit-transform: rotate(135deg);\n        transform: rotate(135deg);\n    }\n    100% {\n        stroke-dashoffset: 187;\n        -webkit-transform: rotate(450deg);\n        transform: rotate(450deg);\n    }\n}", ""]);
+	exports.push([module.id, "/*总入口*/\n.portalStyle-2oWr2 {\n    opacity: 0;\n    z-index: 100;\n    position: relative;\n}\n.slider-3fx7S {\n    position: fixed;\n    width: 100%;\n    height: 100%;\n    top: 0;\n    left: 0;\n    z-index: 100;\n}\n\n\n\n/*关闭背景层*/\n.screenOverlay-3VSUR {\n    z-index: 1;\n}\n\n\n/*切换按钮*/\n.switchImageButton-3Sqb4 {\n    position: absolute;\n    top: 50%;\n    width: 40px;\n    height: 40px;\n    z-index: 20;\n    box-sizing: border-box;\n    padding-top: 1px;\n    border-radius: 2px;\n    cursor: pointer;\n    transition: all .3s;\n}\n.switchButtonLayer-uqz0f {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    opacity: 0;\n    transition: all .2s;\n}\n.switchButtonLayer-uqz0f:hover {\n    opacity: 0.2;\n}\n.switchButtonLayer-uqz0f:active {\n    opacity: 0.4;\n}\n.toPreviousButton-1ZWVL {\n    left: 30px;\n    transition: all .3s;\n}\n.toPreviousButton-1ZWVL:hover {\n    transform: scale(1.2);\n    background-color: white !important;\n}\n.toPreviousButton-1ZWVL:active {\n    transform: scale(0.9);\n    background-color: #888888 !important;\n}\n.toPreviousButton-1ZWVL:hover svg {\n    fill: black !important;\n}\n.toNextButton-1dHwq {\n    right: 30px;\n    transition: all .3s;\n}\n.toNextButton-1dHwq:hover {\n    transform: scale(1.2);\n    background-color: white !important;\n}\n.toNextButton-1dHwq:active {\n    transform: scale(0.9);\n    background-color: #888888 !important;\n}\n.toNextButton-1dHwq:hover svg {\n    fill: black !important;\n}\n.switchButtonIcons-1wtSX {\n    width: 100%;\n    height: 100%;\n    fill: white;\n}\n.noUse-k_ZeB:before {\n    content: \"\";\n    top: 0;\n    left: 0;\n    background-color: #ff3466;\n    width: 50px;\n    height: 50px;\n    border-radius: 100%;\n    -webkit-animation-fill-mode: both;\n    animation-fill-mode: both;\n    position: absolute;\n    opacity: 0;\n    -webkit-animation: jumper-1COnh 1.8s 0.33333s ease-out infinite;\n}\n.noUse-k_ZeB:after {\n    content: \"\";\n    top: 0;\n    left: 0;\n    background-color: #ff3466;\n    width: 50px;\n    height: 50px;\n    border-radius: 100%;\n    -webkit-animation-fill-mode: both;\n    animation-fill-mode: both;\n    position: absolute;\n    opacity: 0;\n    -webkit-animation: jumper-1COnh 1.8s 0.66666s ease-out infinite;\n}\n\n\n/*退出缩放*/\n.sliderZoomQuit-iAtKv {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    z-index: -100;\n    cursor: zoom-out;\n}\n\n\n/*图片区域*/\n.sliderImageListWrapper-3woYC {\n    position: relative;\n    width: 100%;\n    height: 100%;\n    left: 0;\n    top: 0;\n    z-index: 15;\n    background-color: rgba(0, 0, 0, 0.8);\n    box-shadow: rgba(0, 0, 0, 0.247059) 0px 14px 45px, rgba(0, 0, 0, 0.219608) 0px 10px 18px;\n}\n.sliderImageWrapper-1ATuC {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    left: 0;\n    top: 0;\n}\n.sliderCloser-9QxjR {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    left: 0;\n    top: 0;\n}\n.sliderImageContainer-1mWBA {\n    opacity: 0;\n    width: 100%;\n    height: 100%;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.sliderImageContainerOnZoom-3k09s {\n    justify-content: flex-start;\n    align-items: flex-start;\n}\n.sliderImage-2d0oN {\n    z-index: 1;\n    border-radius: 2px;\n    transition: .3s height, .3s width;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n}\n.imageIndicatorWrapper-2JJLq {\n    position: relative;\n    width: 90px;\n    height: 100%;\n    margin: auto;\n}\n.imageIndicator-1P5CB{\n    position: absolute;\n    width: 100%;\n    height:26px;\n    bottom: 10px;\n    color: white;\n    text-align: center;\n    border-radius: 3px;\n    background-color: rgba(0, 0, 0, 0.65);\n    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);\n}\n.imageIndicatorLabel-1gFvF {\n    -webkit-user-select: none;\n    -moz-user-select: none;\n    line-height: 26px;\n    font-size: 12px;\n}\n.imageLoading-3AmXW {\n    position: absolute;\n    top: 46vh;\n    left: 0;\n    width: 100%;\n    text-align: center;\n}\n.imageAction-2whOf {\n    position: absolute;\n    width: 30px;\n    z-index: 2;\n}\n.imageActionButton-1pmAA {\n    height: 30px;\n    margin-bottom: 5px;\n}\n.imageZoom-TCx73 {\n}\n.downloadButton-399iK {\n}\n.actionButtonIcons-L86u6 {\n    cursor: pointer;\n    width:  100%;\n    height: 30px;\n    fill: #ffffff;\n    transition: all .3s;\n}\n.actionButtonIcons-L86u6:hover {\n    transform: scale(1.2);\n}\n.actionButtonIcons-L86u6:active {\n    transform: scale(0.9);\n}\n.actionButtonIconsDisabled-2wygJ {\n    fill: #676767;\n    cursor: default;\n    transform: scale(1.0) !important;\n}\n\n/*切换叠层*/\n.reloadButtonContainer-3rpyC {\n    position: absolute;\n    top: 48vh;\n    left: 0;\n    width: 100%;\n    text-align: center;\n    z-index: 10;\n}\n.reloadButtonWrapper-2INZP {\n    display: inline-block;\n    width: 60px;\n    height: 60px;\n    border-radius: 5px;\n    transition: all .3s;\n    cursor: pointer;\n    background-color: rgba(0, 0, 0, 0.65);\n    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);\n}\n.reloadButtonWrapper-2INZP:hover {\n    transform: scale(1.1);\n}\n.reloadButtonWrapper-2INZP:active {\n    transform: scale(1.0);\n}\n.reloadButton-1VtvE {\n    margin: 10px;\n    fill: #ffffff;\n}\n.reloadHint-Rl9Bf {\n    font-size: 12px;\n    color: white;\n    display: block;\n    margin-top: 8px;\n}\n.imageSwitchContainer-1HCIs {\n    position: absolute;\n    top: 0;\n    left: 0;\n    z-index: 1;\n}\n.imageSwitch-1aIbt {\n    position: relative;\n}\n.switchOverlay-fqILT {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    -webkit-user-select: none;\n    -moz-user-select: none;\n}\n.leftSwitch-3AmZe {\n    position: absolute;\n    height: 100%;\n    width: 40%;\n    left: 0;\n    cursor: pointer;\n}\n.rightSwitch-1IUnE {\n    position: absolute;\n    height: 100%;\n    width: 40%;\n    right: 0;\n    cursor: pointer;\n}\n\n\n/*按钮动画*/\n@-webkit-keyframes jumper-1COnh {\n    0% {\n        opacity: 0;\n        -webkit-transform: scale(0);\n        transform: scale(0)\n    }\n    5% {\n        opacity: 1\n    }\n    100% {\n        -webkit-transform: scale(1);\n        transform: scale(1);\n        opacity: 0\n    }\n}\n@keyframes jumper-1COnh {\n    0% {\n        opacity: 0;\n        -webkit-transform: scale(0);\n        transform: scale(0)\n    }\n    5% {\n        opacity: 1\n    }\n    100% {\n        opacity: 0\n    }\n}\n\n\n/*Loading动画*/\n.circleLoading-g8YHQ {\n    -webkit-animation: rotator-2lGr1 1.4s linear infinite;\n    animation: rotator-2lGr1 1.4s linear infinite;\n}\n\n@-webkit-keyframes rotator-2lGr1 {\n    0% {\n        -webkit-transform: rotate(0deg);\n        transform: rotate(0deg);\n    }\n    100% {\n        -webkit-transform: rotate(270deg);\n        transform: rotate(270deg);\n    }\n}\n\n@keyframes rotator-2lGr1 {\n    0% {\n        -webkit-transform: rotate(0deg);\n        transform: rotate(0deg);\n    }\n    100% {\n        -webkit-transform: rotate(270deg);\n        transform: rotate(270deg);\n    }\n}\n.circleLoadingPath-2Y-Sp {\n    stroke-dasharray: 187;\n    stroke-dashoffset: 0;\n    -webkit-transform-origin: center;\n    transform-origin: center;\n    -webkit-animation: dash-XtFOS 1.4s ease-in-out infinite, colors-37Zis 5.6s ease-in-out infinite;\n    animation: dash-XtFOS 1.4s ease-in-out infinite, colors-37Zis 5.6s ease-in-out infinite;\n}\n@-webkit-keyframes colors-37Zis {\n    0% {\n        stroke: #4285F4;\n    }\n    25% {\n        stroke: #DE3E35;\n    }\n    50% {\n        stroke: #F7C223;\n    }\n    75% {\n        stroke: #1B9A59;\n    }\n    100% {\n        stroke: #4285F4;\n    }\n}\n\n@keyframes colors-37Zis {\n    0% {\n        stroke: #4285F4;\n    }\n    25% {\n        stroke: #DE3E35;\n    }\n    50% {\n        stroke: #F7C223;\n    }\n    75% {\n        stroke: #1B9A59;\n    }\n    100% {\n        stroke: #4285F4;\n    }\n}\n@-webkit-keyframes dash-XtFOS {\n    0% {\n        stroke-dashoffset: 187;\n    }\n    50% {\n        stroke-dashoffset: 46.75;\n        -webkit-transform: rotate(135deg);\n        transform: rotate(135deg);\n    }\n    100% {\n        stroke-dashoffset: 187;\n        -webkit-transform: rotate(450deg);\n        transform: rotate(450deg);\n    }\n}\n@keyframes dash-XtFOS {\n    0% {\n        stroke-dashoffset: 187;\n    }\n    50% {\n        stroke-dashoffset: 46.75;\n        -webkit-transform: rotate(135deg);\n        transform: rotate(135deg);\n    }\n    100% {\n        stroke-dashoffset: 187;\n        -webkit-transform: rotate(450deg);\n        transform: rotate(450deg);\n    }\n}", ""]);
 
 	// exports
 	exports.locals = {
@@ -24166,9 +24252,7 @@
 		"switchImageButton": "switchImageButton-3Sqb4",
 		"switchButtonLayer": "switchButtonLayer-uqz0f",
 		"toPreviousButton": "toPreviousButton-1ZWVL switchImageButton-3Sqb4",
-		"toPreviousButtonMove": "toPreviousButtonMove-2KXc2",
 		"toNextButton": "toNextButton-1dHwq switchImageButton-3Sqb4",
-		"toNextButtonMove": "toNextButtonMove-3sObS",
 		"switchButtonIcons": "switchButtonIcons-1wtSX",
 		"noUse": "noUse-k_ZeB",
 		"jumper": "jumper-1COnh",
@@ -24188,6 +24272,11 @@
 		"imageZoom": "imageZoom-TCx73 imageActionButton-1pmAA",
 		"downloadButton": "downloadButton-399iK imageActionButton-1pmAA",
 		"actionButtonIcons": "actionButtonIcons-L86u6",
+		"actionButtonIconsDisabled": "actionButtonIconsDisabled-2wygJ actionButtonIcons-L86u6",
+		"reloadButtonContainer": "reloadButtonContainer-3rpyC",
+		"reloadButtonWrapper": "reloadButtonWrapper-2INZP",
+		"reloadButton": "reloadButton-1VtvE",
+		"reloadHint": "reloadHint-Rl9Bf",
 		"imageSwitchContainer": "imageSwitchContainer-1HCIs sliderImageContainer-1mWBA",
 		"imageSwitch": "imageSwitch-1aIbt sliderImage-2d0oN",
 		"switchOverlay": "switchOverlay-fqILT",
@@ -24201,7 +24290,7 @@
 	};
 
 /***/ },
-/* 186 */
+/* 185 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24227,7 +24316,7 @@
 	exports.default = styles;
 
 /***/ },
-/* 187 */
+/* 186 */
 /***/ function(module, exports) {
 
 	'use strict';

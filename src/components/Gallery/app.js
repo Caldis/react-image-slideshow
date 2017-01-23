@@ -19,7 +19,6 @@
 
 import React from 'react'
 import styles from './app.css';
-import jsStyles from './appStyle.js';
 
 class Gallery extends React.Component{
     constructor(props) {
