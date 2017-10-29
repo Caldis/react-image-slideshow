@@ -1,3 +1,7 @@
+# 本项目已不再维护, 欢迎使用更强大的 [react-zmage](https://github.com/Caldis/react-zmage)
+# This project has moved. We recommend you to use [react-zmage](https://github.com/Caldis/react-zmage) instead.
+
+
 react-image-slideshow
 =====================
 [![npm version](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/react-image-slideshow)
